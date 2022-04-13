@@ -1,0 +1,41 @@
+﻿@using NewGenerationBlog.Shared.Utilities.Results.ComplextTypes;
+@model NewGenerationBlog.Entities.Dtos.CategoryListDto
+
+<div class="container container-fluid">
+    <h2>Categories</h2>
+    <div class="row">
+        <a class="btn btn-success" asp-area="" asp-controller="Category" asp-action="AddNew">Add New</a>
+    </div>
+    @if (Model.ResultStatus == ResultStatus.Error)
+    {
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">An error occured!</h4>
+            <p>An error occured when the data retreiving from database.</p>
+            <hr>
+            <p class="mb-0">Please try later.</p>
+        </div>
+    }
+
+
+    @if (Model.ResultStatus == ResultStatus.Success)
+    {
+        <div class="container">
+            <div class="row">
+                @foreach (var category in Model.Categories)
+                {
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="~/images/coffee.jpeg" class="card-img-top" alt="coffee">
+                            <div class="card-body">
+                                <h5 class="card-title">@category.Name</h5>
+                                <p class="card-text">@category.Description</p>
+                                <a href="#" class="btn btn-primary">Details</a>
+                                <a href="#" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

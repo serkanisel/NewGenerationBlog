@@ -1,0 +1,15 @@
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Entities.deps.json
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Entities.dll
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Entities.pdb
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Shared.dll
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Shared.pdb
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.AssemblyReference.cache
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.GeneratedMSBuildEditorConfig.editorconfig
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.AssemblyInfoInputs.cache
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.AssemblyInfo.cs
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.CoreCompileInputs.cache
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.CopyComplete
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.dll
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/refint/NewGenerationBlog.Entities.dll
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.pdb
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/ref/NewGenerationBlog.Entities.dll

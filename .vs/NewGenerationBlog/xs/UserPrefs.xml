@@ -1,0 +1,47 @@
+﻿<Properties StartupConfiguration="MVC Project" GitUserInfo="UsingGIT">
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="MVC Project" Name="MVC Project">
+      <Items>
+        <StartupItem ItemId="{5239ED18-7654-4450-A9ED-BD1B7FD10489}" ItemName="NewGenerationBlog.MVC" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs">
+    <Files>
+      <File FileName="NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NewGenerationBlog" expanded="True">
+            <Node name="NewGenerationBlog.MVC" expanded="True">
+              <Node name="Areas" expanded="True">
+                <Node name="Admin" expanded="True">
+                  <Node name="Controllers" expanded="True">
+                    <Node name="CategoryController.cs" selected="True" />
+                  </Node>
+                  <Node name="Views" expanded="True">
+                    <Node name="Home" expanded="True" />
+                    <Node name="Shared" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.NewGenerationBlog.MVC PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.NewGenerationBlog.Entities FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+</Properties>

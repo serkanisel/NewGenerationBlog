@@ -1,0 +1,5 @@
+/Users/serkanisel/Projects/NewGenerationBlog/NewGeneration.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.AssemblyReference.cache
+/Users/serkanisel/Projects/NewGenerationBlog/NewGeneration.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.GeneratedMSBuildEditorConfig.editorconfig
+/Users/serkanisel/Projects/NewGenerationBlog/NewGeneration.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.AssemblyInfoInputs.cache
+/Users/serkanisel/Projects/NewGenerationBlog/NewGeneration.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.AssemblyInfo.cs
+/Users/serkanisel/Projects/NewGenerationBlog/NewGeneration.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.CoreCompileInputs.cache

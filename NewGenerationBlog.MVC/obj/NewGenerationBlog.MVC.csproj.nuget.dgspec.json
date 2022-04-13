@@ -1,0 +1,347 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/NewGenerationBlog.MVC.csproj": {}
+  },
+  "projects": {
+    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj",
+        "projectName": "NewGenerationBlog.Data",
+        "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj",
+        "packagesPath": "/Users/serkanisel/.nuget/packages/",
+        "outputPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/serkanisel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/NewGenerationBlog.Entities.csproj": {
+                "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/NewGenerationBlog.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/NewGenerationBlog.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/NewGenerationBlog.Entities.csproj",
+        "projectName": "NewGenerationBlog.Entities",
+        "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/NewGenerationBlog.Entities.csproj",
+        "packagesPath": "/Users/serkanisel/.nuget/packages/",
+        "outputPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/serkanisel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj": {
+                "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/NewGenerationBlog.MVC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/NewGenerationBlog.MVC.csproj",
+        "projectName": "NewGenerationBlog.MVC",
+        "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/NewGenerationBlog.MVC.csproj",
+        "packagesPath": "/Users/serkanisel/.nuget/packages/",
+        "outputPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/serkanisel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/NewGenerationBlog.Services.csproj": {
+                "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/NewGenerationBlog.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[5.0.16, 5.0.16]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/NewGenerationBlog.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/NewGenerationBlog.Services.csproj",
+        "projectName": "NewGenerationBlog.Services",
+        "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/NewGenerationBlog.Services.csproj",
+        "packagesPath": "/Users/serkanisel/.nuget/packages/",
+        "outputPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/serkanisel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj": {
+                "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj"
+              },
+              "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/NewGenerationBlog.Entities.csproj": {
+                "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/NewGenerationBlog.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
+        "projectName": "NewGenerationBlog.Shared",
+        "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
+        "packagesPath": "/Users/serkanisel/.nuget/packages/",
+        "outputPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/serkanisel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

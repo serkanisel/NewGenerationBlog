@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Abstract\" />
+    <None Remove="Concrete\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL.Design" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Concrete\EntityFramework\" />
+    <None Remove="Concrete\EntityFramework\Contexts\" />
+    <None Remove="Concrete\EntityFramework\Mapping\" />
+    <None Remove="Concrete\EntityFramework\Repositories\" />
+    <None Remove="Migrations\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Relational" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Concrete\EntityFramework\" />
+    <Folder Include="Concrete\EntityFramework\Contexts\" />
+    <Folder Include="Concrete\EntityFramework\Mapping\" />
+    <Folder Include="Concrete\EntityFramework\Repositories\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.15" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NewGenerationBlog.Entities\NewGenerationBlog.Entities.csproj" />
+  </ItemGroup>
+</Project>

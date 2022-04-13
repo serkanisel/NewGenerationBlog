@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Abstract\" />
+    <None Remove="Concrete\" />
+    <None Remove="AutoMapper" />
+    <None Remove="AutoMapper\" />
+    <None Remove="AutoMapper\Profiles\" />
+    <None Remove="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="AutoMapper\" />
+    <Folder Include="AutoMapper\Profiles\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NewGenerationBlog.Data\NewGenerationBlog.Data.csproj" />
+    <ProjectReference Include="..\NewGenerationBlog.Entities\NewGenerationBlog.Entities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+</Project>

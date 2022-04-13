@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <title>Sidebar 05</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    @await Html.PartialAsync("_LayoutCssPartial")
+
+</head>
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        @await Html.PartialAsync("_LayoutSideBarPartial")
+
+        <!-- Page Content  -->
+        <div id="content" class="p-md-5 pt-2">
+            @RenderBody()
+        </div>
+    </div>
+    
+    @await Html.PartialAsync("_LayoutJsPartial")
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>
+
+
+
+
+
+
+

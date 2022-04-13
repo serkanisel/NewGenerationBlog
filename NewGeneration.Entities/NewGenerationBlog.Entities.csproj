@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NewGenerationBlog.Shared\NewGenerationBlog.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\NewGeneration.Entities.csproj.nuget.dgspec.json" />
+    <None Include="obj\NewGeneration.Entities.csproj.nuget.g.props" />
+    <None Include="obj\NewGeneration.Entities.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\NewGenerationBlog.Entities.csproj.nuget.dgspec.json" />
+    <None Include="obj\NewGenerationBlog.Entities.csproj.nuget.g.targets" />
+    <None Include="obj\NewGenerationBlog.Entities.csproj.nuget.g.props" />
+    <None Include="obj\project.assets.json" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.dll" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.csproj.CopyComplete" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.csproj.FileListAbsolute.txt" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.csproj.FileListAbsolute.txt" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.pdb" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.assets.cache" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.assets.cache" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.dll" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net5.0\NewGeneration.Entities.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.csproj.CopyComplete" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net5.0\NewGenerationBlog.Entities.pdb" />
+    <None Include="obj\Debug\net5.0\ref\NewGeneration.Entities.dll" />
+    <None Include="obj\Debug\net5.0\ref\NewGenerationBlog.Entities.dll" />
+    <None Include="obj\Debug\net5.0\refint\NewGenerationBlog.Entities.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="obj\Debug\net5.0\NewGeneration.Entities.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net5.0\NewGenerationBlog.Entities.AssemblyInfo.cs" />
+  </ItemGroup>
+</Project>
