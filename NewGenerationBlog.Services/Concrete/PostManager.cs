@@ -55,14 +55,11 @@ namespace NewGenerationBlog.Services.Concrete
         public async Task<IDataResult<PostDto>> Get(int postID)
         {
             var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID, p => p.User, p => p.Category);
+            var postDto = _mapper.Map<PostDto>(post);
 
             if(post != null)
             {
-                return new DataResult<PostDto>(ResultStatus.Success, new PostDto
-                {
-                    Post=post,
-                    ResultStatus=ResultStatus.Success
-                });
+                return new DataResult<PostDto>(ResultStatus.Success, postDto);
             }
 
             return new DataResult<PostDto>(ResultStatus.Error, "No Post Such Found",null);
@@ -76,8 +73,7 @@ namespace NewGenerationBlog.Services.Concrete
             {
                 return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
                 {
-                    Posts = posts,
-                    ResultStatus = ResultStatus.Success
+                    Posts = posts
                 });
             }
 
@@ -92,8 +88,7 @@ namespace NewGenerationBlog.Services.Concrete
             {
                 return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
                 {
-                    Posts = posts,
-                    ResultStatus = ResultStatus.Success
+                    Posts = posts
                 });
             }
 
@@ -108,8 +103,7 @@ namespace NewGenerationBlog.Services.Concrete
             {
                 return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
                 {
-                    Posts = posts,
-                    ResultStatus = ResultStatus.Success
+                    Posts = posts
                 });
             }
 
@@ -124,8 +118,7 @@ namespace NewGenerationBlog.Services.Concrete
             {
                 return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
                 {
-                    Posts = posts,
-                    ResultStatus = ResultStatus.Success
+                    Posts = posts
                 });
             }
 

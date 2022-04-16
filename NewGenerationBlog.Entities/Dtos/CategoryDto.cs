@@ -1,11 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using NewGenerationBlog.Entities.Concrete;
 using NewGenerationBlog.Shared.Entities.Abstract;
 
 namespace NewGenerationBlog.Entities.Dtos
 {
-    public class CategoryDto: DtoGetBase 
+    public class CategoryDto: DtoBase 
     {
-        public Category Category { get; set; }
+        public string Name  { get; set; }
+        public string Description { get; set; }
+
+        public IList<PostDto> Posts { get; set; }
+
+        public User User { get; set; }
+
+        public int PostCount { get; set; }
+        public int CreatedById { get; set; }
     }
 }

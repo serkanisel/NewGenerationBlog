@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.MVC", "Ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.Entities", "NewGenerationBlog.Entities\NewGenerationBlog.Entities.csproj", "{0A1FF505-51EE-44A6-8464-1848904DCC09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.WebAPI", "NewGenerationBlog.WebAPI\NewGenerationBlog.WebAPI.csproj", "{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0A1FF505-51EE-44A6-8464-1848904DCC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A1FF505-51EE-44A6-8464-1848904DCC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A1FF505-51EE-44A6-8464-1848904DCC09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
