@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MJouzq9TLE2xtJi9gNLyfkXZNnD7y3kYMjzg17S2S5kSmLq19Nz+aQQIjwLU+gR+vz4gwupJhd9w3OX+L9igZA==",
+  "dgSpecHash": "YdbxBd5wEv1/4OVdtrsG105UUIt/KufREdWfANTsXc0EdVwBOLfSGY3DPsmkO/NJlrc64rB54O1naglcXeBn8g==",
   "success": true,
-  "projectFilePath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/NewGenerationBlog.Services.csproj",
+  "projectFilePath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Services/NewGenerationBlog.Services.csproj",
   "expectedPackageFiles": [
     "/Users/serkanisel/.nuget/packages/automapper/11.0.1/automapper.11.0.1.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",

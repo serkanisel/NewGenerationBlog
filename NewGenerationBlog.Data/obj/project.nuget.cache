@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dbzikwD25yH09m9K6kxQBSOMYAr9sAEDBaLKefj+yBxeEhFxuy+U3SgcnT+50GJD0IA5iGtGXNMzUyHxA6GyOw==",
+  "dgSpecHash": "SsX6lzse7nHlrD73IlSeF4Dv4vJ+yy13Xv4PqrY40iOPn1AwLP9bwuopRDSUB2KPb78mJN9TFfFVDiKJkKvfBw==",
   "success": true,
-  "projectFilePath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj",
+  "projectFilePath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj",
   "expectedPackageFiles": [
     "/Users/serkanisel/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",

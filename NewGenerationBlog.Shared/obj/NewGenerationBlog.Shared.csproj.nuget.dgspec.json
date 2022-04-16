@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj": {}
+    "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj": {}
   },
   "projects": {
-    "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj": {
+    "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
+        "projectUniqueName": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
         "projectName": "NewGenerationBlog.Shared",
-        "projectPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
+        "projectPath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
         "packagesPath": "/Users/serkanisel/.nuget/packages/",
-        "outputPath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/obj/",
+        "outputPath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/serkanisel/.nuget/NuGet/NuGet.Config"

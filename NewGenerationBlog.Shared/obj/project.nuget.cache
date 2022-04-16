@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P9K0cg1CZRz3e5L+RIZigFvOKrlwRsxrWKLT5mzIDodp0Olwf1I+qps3+Bjc/r6/n+2o4+KiEuosi7nyJ+MobQ==",
+  "dgSpecHash": "jgkr1EuMfuNRrxsQcLLVoPSEl/NqNp2oU8uxQY5c73P7rlqvl46ior1AruIZ1ZUyxaPFShumPeRiCNkoGz3t0Q==",
   "success": true,
-  "projectFilePath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
+  "projectFilePath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
   "expectedPackageFiles": [
     "/Users/serkanisel/.nuget/packages/microsoft.entityframeworkcore/5.0.15/microsoft.entityframeworkcore.5.0.15.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/microsoft.entityframeworkcore.abstractions/5.0.15/microsoft.entityframeworkcore.abstractions.5.0.15.nupkg.sha512",
