@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "C5ZUYM8W3SOxTFhJO1dqUW0tXIuyVTBKE1jLgNGNcfWJW8ib8fK74WJ6xhRRGY+mxhP5MddjFYyrQitSD6BLrg==",
+  "dgSpecHash": "SOscoJOBzr8tIl67CkEqPmoSJ0z/IJ9NUEt4Rzr2UOiPFHdVcmJMKL6JkHVpMF5vfi0OsHAnZUfaVImmW8HxUw==",
   "success": true,
   "projectFilePath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/NewGenerationBlog.MVC.csproj",
   "expectedPackageFiles": [
@@ -110,8 +110,7 @@
     "/Users/serkanisel/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.threading.timer/4.3.0/system.threading.timer.4.3.0.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "/Users/serkanisel/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
-    "/Users/serkanisel/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.16/microsoft.netcore.app.host.osx-x64.5.0.16.nupkg.sha512"
+    "/Users/serkanisel/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

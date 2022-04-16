@@ -366,6 +366,8 @@
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Areas/Admin/Views/Shared/_LayoutSideBarNavPartial.cshtml.g.cs
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Areas/Admin/Views/_ViewImports.cshtml.g.cs
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Areas/Admin/Views/_ViewStart.cshtml.g.cs
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Views/Category/AddNew.cshtml.g.cs
+/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Views/Category/Index.cshtml.g.cs
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Views/Home/Index.cshtml.g.cs
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Views/Shared/_LayoutCssPartial.cshtml.g.cs
@@ -382,4 +384,3 @@
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/NewGenerationBlog.MVC.pdb
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/NewGenerationBlog.MVC.genruntimeconfig.cache
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/ref/NewGenerationBlog.MVC.dll
-/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/obj/Debug/net5.0/Razor/Views/Category/Index.cshtml.g.cs

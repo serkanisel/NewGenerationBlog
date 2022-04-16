@@ -16,5 +16,7 @@ namespace NewGenerationBlog.Entities.Concrete
 
         public ICollection<Post> Posts {get;set;}
 
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

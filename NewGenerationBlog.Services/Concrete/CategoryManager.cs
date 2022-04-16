@@ -8,6 +8,7 @@ using NewGenerationBlog.Services.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.ComplextTypes;
 using NewGenerationBlog.Shared.Utilities.Results.Concrete;
+using System.Collections.Generic;
 
 namespace NewGenerationBlog.Services.Concrete
 {
@@ -55,15 +56,11 @@ namespace NewGenerationBlog.Services.Concrete
         public async Task<IDataResult<CategoryDto>> Get(int categoryID)
         {
             var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryID, c => c.Posts);
+            var categoryDto = _mapper.Map<CategoryDto>(category);
 
             if (category != null)
             {
-
-                return new DataResult<CategoryDto>(ResultStatus.Success, new CategoryDto
-                {
-                    Category = category,
-                    ResultStatus = ResultStatus.Success
-                });
+                return new DataResult<CategoryDto>(ResultStatus.Success, categoryDto);
             }
 
             return new DataResult<CategoryDto>(ResultStatus.Error, "No category found", null);
@@ -73,32 +70,42 @@ namespace NewGenerationBlog.Services.Concrete
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(null, c => c.Posts);
 
+            var categoryDtoList = _mapper.Map<IList<CategoryDto>>(categories);
+
             if (categories.Count > -1)
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
                 {
-                    Categories = categories,
-                    ResultStatus = ResultStatus.Success
+                    Categories = categoryDtoList
                 });
             }
 
             return new DataResult<CategoryListDto>(ResultStatus.Error, "No Category Found", null);
         }
 
-        public async Task<IDataResult<CategoryListDto>> GetAllByNoneDeleted()
+        public async Task<IDataResult<IList<CategoryDto>>> GetAllByNoneDeleted(int userId)
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false, c => c.Posts);
+            var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false);
+
+            IList<CategoryDto> result=new List<CategoryDto>();
+
+            foreach (var item in categories)
+            {
+                CategoryDto categoryDto = new CategoryDto();
+                categoryDto.Id = item.Id;
+                categoryDto.Name = item.Name;
+                categoryDto.Description = item.Description;
+                categoryDto.PostCount = await _unitOfWork.Posts.CountAsync(p => p.CategoryId == item.Id);
+
+                result.Add(categoryDto);
+            }
 
             if (categories.Count > -1)
             {
-                return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
-                {
-                    Categories = categories,
-                    ResultStatus = ResultStatus.Success
-                });
+                return new DataResult<IList<CategoryDto>>(ResultStatus.Success, result);
             }
 
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "No Category Found", null);
+            return new DataResult<IList<CategoryDto>>(ResultStatus.Error, "No Category Found", null);
         }
 
         public async Task<IResult> HardDelete(int categoryID)
