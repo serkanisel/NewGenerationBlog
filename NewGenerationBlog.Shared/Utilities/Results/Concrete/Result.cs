@@ -13,17 +13,17 @@ namespace NewGenerationBlog.Shared.Utilities.Results.Concrete
 
         }
 
-        public Result(ResultStatus resultStatus, string message,Exception exception)
+        public Result(ResultStatus resultStatus, string message,string exception)
         {
             ResultStatus = resultStatus;
             Message = message;
-            Exception = exception;
+            ErrorMessage = exception;
         }
 
         public ResultStatus ResultStatus { get; }
 
         public string Message { get; }
 
-        public Exception Exception { get; }
+        public string ErrorMessage { get; }
      }
 }

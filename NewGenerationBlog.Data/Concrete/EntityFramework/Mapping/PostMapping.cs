@@ -39,68 +39,6 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.HasOne<User>(a => a.User).WithMany(c => c.Posts).HasForeignKey(a => a.UserId).HasConstraintName("FK_Post_User");
 
             builder.ToTable("Posts");
-
-            builder.HasData(
-                new Post()
-                {
-                    Id = 1,
-                    CategoryId = 1,
-                    Title = "C# 9.0 ve .net 5 yenilikleri",
-                    Content = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.",
-
-                    Thumbnail = "Default.jpg",
-                    SeoDecription = "C# 9.0 ve .net 5 yenilikleri",
-                    SeoTags = "C#,C# 9, .NET5, .NET Framework, .NET Core",
-                    SeoAuthor = "Serkan İşel",
-                    Date = DateTime.Now,
-                    UserId = 1,
-                    IsDeleted = false,
-                    IsPublic = false,
-                    CreatedById = 1,
-                    CreatedDate = DateTime.Now,
-                    ModifiedDate = DateTime.Now,
-                    ViewsCount=100
-                },
-            new Post()
-            {
-                Id = 2,
-                CategoryId = 2,
-                Title = "C++ nedir?",
-                Content = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.",
-
-                Thumbnail = "Default.jpg",
-                SeoDecription = "C++ nedir?",
-                SeoTags = "C++,,C",
-                SeoAuthor = "Serkan İşel",
-                Date = DateTime.Now,
-                UserId = 1,
-                IsDeleted = false,
-                IsPublic = false,
-                CreatedById = 1,
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now,
-                ViewsCount=90
-            },
-            new Post()
-            {
-                Id = 3,
-                CategoryId = 3,
-                Title = "Javascript Nedir?",
-                Content = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.",
-
-                Thumbnail = "Default.jpg",
-                SeoDecription = "Javascript Nedir?",
-                SeoTags = "Javascript",
-                SeoAuthor = "Serkan İşel",
-                Date = DateTime.Now,
-                UserId = 1,
-                IsDeleted = false,
-                IsPublic = false,
-                CreatedById = 1,
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now,
-                ViewsCount=110
-            });
         }
     }
 }

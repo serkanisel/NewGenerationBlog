@@ -9,6 +9,6 @@ namespace NewGenerationBlog.Shared.Utilities.Results.Abstract
 
         public string Message { get;  }
 
-        public Exception Exception { get; }
+        public string ErrorMessage { get; }
     }
 }

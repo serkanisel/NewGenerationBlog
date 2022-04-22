@@ -22,17 +22,6 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(p => p.IsDeleted).HasColumnType("BOOLEAN").IsRequired();
 
             builder.ToTable("Roles");
-
-            builder.HasData(new Role
-            {
-                Id = 1,
-                Name = "Admin",
-                Description = "Super User, Have all rights",
-                IsDeleted = false,
-                CreatedById = 1,
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now,
-            });
         }
     }
 }

@@ -8,36 +8,65 @@ using NewGenerationBlog.Services.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.ComplextTypes;
 using NewGenerationBlog.Shared.Utilities.Results.Concrete;
+using System.Collections.Generic;
 
 namespace NewGenerationBlog.Services.Concrete
 {
-    public class PostManager : IPostService 
+    public class PostManager : IPostService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
 
-        public PostManager(IUnitOfWork unitOfWork,IMapper mapper)
+        public PostManager(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<IResult> Add(PostAddDto postAddDto, int createdById)
+        public async Task<IDataResult<PostDto>> Add(PostAddDto postAddDto, int createdById)
         {
-            var post = _mapper.Map<Post>(postAddDto);
-            post.UserId = createdById;
+            try
+            {
+                var cat = await _unitOfWork.Categories.GetAsync(p => p.Id == postAddDto.CategoryId);
 
-            await _unitOfWork.Posts.AddAsync(post).ContinueWith(t => _unitOfWork.SaveAsync());
+                if (cat == null)
+                    return new DataResult<PostDto>(ResultStatus.Error, $"No Such Category Found", null);
 
-            return new Result(ResultStatus.Success,$"Post Added Successfully");
+                Post post = new Post();
+                post.Title = postAddDto.Title;
+                post.Content = postAddDto.Content;
+                post.Thumbnail = postAddDto.Thumbnail;
+                post.SeoAuthor = postAddDto.SeoAuthor;
+                post.SeoDecription = postAddDto.SeoDescription;
+                post.SeoTags = postAddDto.SeoTags;
+                post.CategoryId = postAddDto.CategoryId;
+                post.UserId = createdById;
+
+                await _unitOfWork.Posts.AddAsync(post);
+                await _unitOfWork.SaveAsync();
+
+                PostDto postDto = new PostDto();
+                postDto.Id = post.Id;
+                postDto.CreatedDate = post.CreatedDate;
+                postDto.ModifiedDate = post.ModifiedDate;
+                postDto.Content = post.Content;
+                postDto.Title = post.Title;
+
+                return new DataResult<PostDto>(ResultStatus.Success, $"Post Added Successfully", postDto);
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<PostDto>(ResultStatus.Error, $"An Error Occured", null, ex.Message);
+            }
+
         }
 
         public async Task<IResult> Delete(int postID)
         {
             var result = await _unitOfWork.Posts.AnyAsync(p => p.Id == postID);
 
-            if(result)
+            if (result)
             {
                 var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID);
 
@@ -57,19 +86,19 @@ namespace NewGenerationBlog.Services.Concrete
             var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID, p => p.User, p => p.Category);
             var postDto = _mapper.Map<PostDto>(post);
 
-            if(post != null)
+            if (post != null)
             {
                 return new DataResult<PostDto>(ResultStatus.Success, postDto);
             }
 
-            return new DataResult<PostDto>(ResultStatus.Error, "No Post Such Found",null);
+            return new DataResult<PostDto>(ResultStatus.Error, "No Post Such Found", null);
         }
 
         public async Task<IDataResult<PostListDto>> GetAll()
         {
             var posts = await _unitOfWork.Posts.GetAllAsync(null, p => p.User, p => p.Category);
 
-            if(posts.Count>-1)
+            if (posts.Count > -1)
             {
                 return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
                 {
@@ -97,7 +126,7 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<PostListDto>> GetAllByNoneDeleted()
         {
-            var posts = await _unitOfWork.Posts.GetAllAsync(p => p.IsDeleted==false, p => p.User, p => p.Category);
+            var posts = await _unitOfWork.Posts.GetAllAsync(p => p.IsDeleted == false, p => p.User, p => p.Category);
 
             if (posts.Count > -1)
             {
@@ -110,19 +139,53 @@ namespace NewGenerationBlog.Services.Concrete
             return new DataResult<PostListDto>(ResultStatus.Error, "No Post Found", null);
         }
 
-        public async Task<IDataResult<PostListDto>> GetAllByUserId(int userId)
+        public async Task<IDataResult<IList<PostDto>>> GetAllByUserId(int userId)
         {
-            var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId==userId && p.IsDeleted==false, p => p.User, p => p.Category);
-
-            if (posts.Count > -1)
+            try
             {
-                return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
-                {
-                    Posts = posts
-                });
-            }
+                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == userId && p.IsDeleted == false, p => p.User, p => p.Category);
 
-            return new DataResult<PostListDto>(ResultStatus.Error, "No Post Found", null);
+                if (posts.Count > -1)
+                {
+                    IList<PostDto> postDtos = new List<PostDto>();
+
+                    foreach (var item in posts)
+                    {
+                        PostDto pDto = new PostDto();
+                        pDto.CommentCount = item.CommentCount;
+                        pDto.Content = item.Content;
+                        pDto.CreatedDate = item.CreatedDate;
+                        pDto.Date = item.Date;
+                        pDto.ModifiedDate = item.ModifiedDate;
+                        pDto.SeoAuthor = item.SeoAuthor;
+                        pDto.SeoDecription = item.SeoDecription;
+                        pDto.SeoTags = item.SeoTags;
+                        pDto.Thumbnail = item.Thumbnail;
+                        pDto.Title = item.Title;
+                        pDto.ViewsCount = item.ViewsCount;
+
+                        pDto.User = new UserDto();
+                        pDto.User.Id = item.User.Id;
+                        pDto.User.FirstName = item.User.FirstName;
+                        pDto.User.LastName = item.User.LastName;
+
+                        pDto.Category = new CategoryDto();
+                        pDto.Category.Id = item.Category.Id;
+                        pDto.Category.Name = item.Category.Name;
+                        pDto.Category.Description = item.Category.Description;
+
+                        postDtos.Add(pDto);
+                    }
+
+                    return new DataResult<IList<PostDto>>(ResultStatus.Success, null, postDtos);
+                }
+
+                return new DataResult<IList<PostDto>>(ResultStatus.Error, "No Post Found", null);
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<IList<PostDto>>(ResultStatus.Error, "An Error Occured", null, ex.Message);
+            }
         }
 
         public async Task<IResult> HardDelete(int postID)
@@ -146,13 +209,33 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IResult> Update(PostUpdateDto postUpdateDto)
         {
-            var post = _mapper.Map<Post>(postUpdateDto);
+            try
+            {
+                Post post = await _unitOfWork.Posts.GetAsync(p => p.Id == postUpdateDto.Id);
 
-            post.ModifiedDate = DateTime.Now;
+                if(post == null)
+                {
+                    return new Result(ResultStatus.Error, "No Such Post Found");
+                }
 
-            await _unitOfWork.Posts.UpdateAsync(post).ContinueWith(p => _unitOfWork.SaveAsync());
+                post.Title = postUpdateDto.Title;
+                post.Content = postUpdateDto.Content;
+                post.SeoAuthor = post.SeoAuthor;
+                post.SeoDecription = post.SeoDecription;
+                post.SeoTags = post.SeoTags;
+                post.Thumbnail = post.Thumbnail;
+                post.ModifiedDate = DateTime.Now;
 
-            return new Result(ResultStatus.Success, "Updated was successfully");
+                await _unitOfWork.Posts.UpdateAsync(post);
+                await _unitOfWork.SaveAsync();
+
+                return new Result(ResultStatus.Success, "Updated was successfully");
+            }
+            catch (Exception ex)
+            {
+                return new Result(ResultStatus.Error, "An Error Occured",ex.Message);
+            }
+
         }
     }
 }

@@ -10,3 +10,15 @@
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/refint/NewGenerationBlog.Shared.dll
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.pdb
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/ref/NewGenerationBlog.Shared.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/bin/Debug/net5.0/NewGenerationBlog.Shared.deps.json
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/bin/Debug/net5.0/NewGenerationBlog.Shared.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/bin/Debug/net5.0/NewGenerationBlog.Shared.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.csproj.AssemblyReference.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.AssemblyInfoInputs.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.AssemblyInfo.cs
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.csproj.CoreCompileInputs.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/refint/NewGenerationBlog.Shared.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/NewGenerationBlog.Shared.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/obj/Debug/net5.0/ref/NewGenerationBlog.Shared.dll

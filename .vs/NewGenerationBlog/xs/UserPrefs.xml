@@ -9,61 +9,57 @@
     </MultiItemSolutionRunConfiguration>
   </MultiItemStartupConfigurations>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" relfile="NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" line="27" column="1" />
-      <Breakpoint file="/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.WebAPI/Controllers/CategoryController.cs" relfile="NewGenerationBlog.WebAPI/Controllers/CategoryController.cs" line="26" column="1" />
-      <Breakpoint file="/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Services/Concrete/CategoryManager.cs" relfile="NewGenerationBlog.Services/Concrete/CategoryManager.cs" line="88" column="1" />
-    </BreakpointStore>
+    <Breakpoint file="/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" relfile="NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" line="27" column="1" />
+    <Breakpoint file="/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Services/Concrete/CategoryManager.cs" relfile="NewGenerationBlog.Services/Concrete/CategoryManager.cs" line="88" column="1" />
+    <Breakpoint file="/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.WebAPI/Controllers/CategoryController.cs" relfile="NewGenerationBlog.WebAPI/Controllers/CategoryController.cs" line="35" column="1" />
+    <Breakpoint file="/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.WebAPI/Program.cs" relfile="NewGenerationBlog.WebAPI/Program.cs" line="20" column="1" />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="NewGenerationBlog.WebAPI/Controllers/CategoryController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NewGenerationBlog.Data/Concrete/EntityFramework/Data/Seed.cs">
     <Files>
-      <File FileName="NewGenerationBlog.Services/AutoMapper/Profiles/CategoryProfile.cs" Line="20" Column="36" />
-      <File FileName="NewGenerationBlog.Services/Concrete/CategoryManager.cs" Line="88" Column="1" />
-      <File FileName="NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" Line="38" Column="1" />
-      <File FileName="NewGenerationBlog.MVC/Areas/Admin/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="NewGenerationBlog.MVC/Views/Home/Index.cshtml" Line="3" Column="35" />
-      <File FileName="NewGenerationBlog.Services/Concrete/PostManager.cs" Line="109" Column="1" />
-      <File FileName="NewGenerationBlog.Entities/Concrete/Post.cs" Line="26" Column="53" />
-      <File FileName="NewGenerationBlog.Entities/Dtos/CategoryDto.cs" Line="15" Column="1" />
-      <File FileName="NewGenerationBlog.Entities/Concrete/User.cs" Line="21" Column="48" />
-      <File FileName="NewGenerationBlog.Services/AutoMapper/Profiles/PostProfile.cs" Line="21" Column="1" />
-      <File FileName="NewGenerationBlog.MVC/Areas/Admin/Views/Category/Index.cshtml" Line="8" Column="2" />
-      <File FileName="NewGenerationBlog.MVC/Views/Category/Index.cshtml" Line="42" Column="1" />
-      <File FileName="NewGenerationBlog.WebAPI/Controllers/CategoryController.cs" Line="33" Column="1" />
-      <File FileName="NewGenerationBlog.Entities/Concrete/Category.cs" Line="21" Column="1" />
-      <File FileName="NewGenerationBlog.WebAPI/Startup.cs" Line="44" Column="1" />
-      <File FileName="NewGenerationBlog.MVC/Startup.cs" Line="59" Column="1" />
-      <File FileName="NewGenerationBlog.WebAPI/WeatherForecast.cs" Line="1" Column="1" />
-      <File FileName="NewGenerationBlog.Services/Extensions/ServiceCollectionExtensions.cs" Line="19" Column="1" />
-      <File FileName="NewGenerationBlog.WebAPI/Program.cs" Line="23" Column="42" />
-      <File FileName="NewGenerationBlog.Shared/Entities/Abstract/DtoBase.cs" Line="13" Column="1" />
-      <File FileName="NewGenerationBlog.Shared/Entities/Abstract/EntityBase.cs" Line="15" Column="45" />
-      <File FileName="NewGenerationBlog.Entities/Dtos/PostDto.cs" Line="1" Column="1" />
-      <File FileName="NewGenerationBlog.Entities/Dtos/CategoryListDto.cs" Line="11" Column="7" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Data/Seed.cs" Line="145" Column="32" />
+      <File FileName="NewGenerationBlog.WebAPI/Startup.cs" Line="50" Column="1" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/CategoryMapping.cs" Line="30" Column="1" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/PostMapping.cs" Line="1" Column="1" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/UserMapping.cs" Line="1" Column="1" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/TagPostMapping.cs" Line="1" Column="1" />
+      <File FileName="NewGenerationBlog.WebAPI/Program.cs" Line="32" Column="33" />
+      <File FileName="NewGenerationBlog.Shared/Entities/Abstract/EntityBase.cs" Line="18" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="NewGenerationBlog" expanded="True">
+          <Node name="NewGenerationBlog" expanded="True" selected="True">
+            <Node name="NewGenerationBlog.Data" expanded="True">
+              <Node name="Concrete" expanded="True">
+                <Node name="EntityFramework" expanded="True">
+                  <Node name="Contexts" expanded="True" />
+                  <Node name="Data" expanded="True" />
+                  <Node name="Mapping" expanded="True" />
+                  <Node name="Repositories" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
             <Node name="NewGenerationBlog.Entities" expanded="True">
-              <Node name="Concrete" expanded="True" />
               <Node name="Dtos" expanded="True" />
             </Node>
-            <Node name="NewGenerationBlog.Services" expanded="True">
-              <Node name="AutoMapper" expanded="True">
-                <Node name="Profiles" expanded="True" />
-              </Node>
-              <Node name="Concrete" expanded="True" />
-            </Node>
             <Node name="NewGenerationBlog.Shared" expanded="True">
+              <Node name="Data" expanded="True">
+                <Node name="Abstract" expanded="True" />
+                <Node name="Concrete" expanded="True">
+                  <Node name="EntityFramework" expanded="True" />
+                </Node>
+              </Node>
               <Node name="Entities" expanded="True">
                 <Node name="Abstract" expanded="True" />
               </Node>
+              <Node name="Utilities" expanded="True">
+                <Node name="Results" expanded="True">
+                  <Node name="Abstract" expanded="True" />
+                </Node>
+              </Node>
             </Node>
             <Node name="NewGenerationBlog.WebAPI" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="CategoryController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
