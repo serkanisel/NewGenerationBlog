@@ -21,39 +21,9 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(p => p.ModifiedDate).HasColumnType("DATE");
             builder.Property(p => p.IsDeleted).HasColumnType("BOOLEAN").IsRequired();
 
-            builder.ToTable("Categories");
+            builder.HasOne<User>(a => a.User).WithMany(c => c.Categories).HasForeignKey(a => a.UserId).HasConstraintName("FK_Post_User");
 
-            builder.HasData(
-                new Category()
-                {
-                    Id = 1,
-                    Name = "C#",
-                    Description = "C# ile ilgili en güncel bilgiler",
-                    IsDeleted = false,
-                    CreatedById = 1,
-                    CreatedDate = DateTime.Now,
-                    ModifiedDate = DateTime.Now
-                },
-                new Category()
-                {
-                    Id = 2,
-                    Name = "C++",
-                    Description = "C++ ile ilgili en güncel bilgiler",
-                    IsDeleted = false,
-                    CreatedById = 1,
-                    CreatedDate = DateTime.Now,
-                    ModifiedDate = DateTime.Now
-                },
-                new Category()
-                {
-                    Id = 3,
-                    Name = "Javascript",
-                    Description = "Javascript ile ilgili en güncel bilgiler",
-                    IsDeleted = false,
-                    CreatedById = 1,
-                    CreatedDate = DateTime.Now,
-                    ModifiedDate = DateTime.Now
-                });
+            builder.ToTable("Categories");
         }
     }
 }

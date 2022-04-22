@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Acx+OmWUgQf/GpcWhLuip/2t3A4L6FNuYDcxx4dgzu3+uFBdkmbI86mdyxyi7g7qfym/F6VoU4laHmhgWkYKfA==",
+  "dgSpecHash": "7N/2EEIeR2TDtKf8AoMZlq9EgC5rEn2TfEWXml2gVU018fNx0Cr028HU1//is1Flw4sDWtng10mERNfsnm2NRw==",
   "success": true,
-  "projectFilePath": "/Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.WebAPI/NewGenerationBlog.WebAPI.csproj",
+  "projectFilePath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.WebAPI/NewGenerationBlog.WebAPI.csproj",
   "expectedPackageFiles": [
     "/Users/serkanisel/.nuget/packages/automapper/11.0.1/automapper.11.0.1.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

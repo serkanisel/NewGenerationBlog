@@ -12,6 +12,6 @@ namespace NewGenerationBlog.Shared.Entities.Abstract
         public virtual DateTime CreatedDate { get; set; } = DateTime.Now;
         public virtual DateTime ModifiedDate { get; set; } = DateTime.Now;
         public virtual bool IsDeleted { get; set; } = false;
-        public int CreatedById { get; set; }
+        public int CreatedById { get; set; } = 1;
     }
 }

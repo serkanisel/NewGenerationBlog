@@ -37,6 +37,5 @@ namespace NewGenerationBlog.Entities.Dtos
         public string SeoTags { get; set; }
 
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
     }
 }

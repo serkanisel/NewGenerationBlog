@@ -23,16 +23,32 @@ namespace NewGenerationBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IResult> Add(CategoryAddDto categoryAddDto, int createdById)
+        public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, int createdById)
         {
-            var category = _mapper.Map<Category>(categoryAddDto);
-            category.CreatedDate = DateTime.Now;
-            category.ModifiedDate = DateTime.Now;
+            try
+            {
+                Category category = new Category();
+                category.Name = categoryAddDto.Name;
+                category.Description = categoryAddDto.Description;
+                category.UserId = createdById;
 
-            await _unitOfWork.Categories.UpdateAsync(category);
-            await _unitOfWork.SaveAsync();
+                await _unitOfWork.Categories.AddAsync(category);
+                await _unitOfWork.SaveAsync();
 
-            return new Result(ResultStatus.Success, $"{categoryAddDto.Name} added successfully");
+                CategoryDto cDto = new CategoryDto()
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    Description = category.Description,
+                    CreatedDate = category.CreatedDate,
+                };
+               
+                return new DataResult<CategoryDto>(ResultStatus.Success, "Category added succesfully" ,cDto);
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<CategoryDto>(ResultStatus.Error,"An error occured",null,ex.Message);
+            }
         }
 
         public async Task<IResult> Delete(int categoryID)
@@ -85,23 +101,24 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<IList<CategoryDto>>> GetAllByNoneDeleted(int userId)
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false);
-
-            IList<CategoryDto> result=new List<CategoryDto>();
-
-            foreach (var item in categories)
-            {
-                CategoryDto categoryDto = new CategoryDto();
-                categoryDto.Id = item.Id;
-                categoryDto.Name = item.Name;
-                categoryDto.Description = item.Description;
-                categoryDto.PostCount = await _unitOfWork.Posts.CountAsync(p => p.CategoryId == item.Id);
-
-                result.Add(categoryDto);
-            }
+            var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false && c.UserId==userId);
 
             if (categories.Count > -1)
             {
+                IList<CategoryDto> result = new List<CategoryDto>();
+                foreach (var item in categories)
+                {
+                    CategoryDto categoryDto = new CategoryDto();
+                    categoryDto.Id = item.Id;
+                    categoryDto.Name = item.Name;
+                    categoryDto.Description = item.Description;
+                    categoryDto.PostCount = await _unitOfWork.Posts.CountAsync(p => p.CategoryId == item.Id);
+                    categoryDto.CreatedDate = item.CreatedDate;
+                    categoryDto.ModifiedDate = item.ModifiedDate;
+
+                    result.Add(categoryDto);
+                }
+
                 return new DataResult<IList<CategoryDto>>(ResultStatus.Success, result);
             }
 
@@ -125,20 +142,29 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IResult> Update(CategoryUpdateDto categoryUpdateDto)
         {
-            var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryUpdateDto.Id);
-
-            if (category == null)
+            try
             {
-                category = _mapper.Map<Category>(categoryUpdateDto);
-                category.ModifiedDate = DateTime.Now;
+                var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryUpdateDto.Id);
 
-                await _unitOfWork.Categories.UpdateAsync(category);
-                await _unitOfWork.SaveAsync();
+                if (category != null)
+                {
+                    category.Name = categoryUpdateDto.Name;
+                    category.Description = categoryUpdateDto.Description;
+                    category.ModifiedDate = DateTime.Now;
 
-                return new Result(ResultStatus.Success, "Category Updated", null);
-            };
+                    await _unitOfWork.Categories.UpdateAsync(category);
+                    await _unitOfWork.SaveAsync();
 
-            return new Result(ResultStatus.Error, "No Such Catogory Found");
+                    return new Result(ResultStatus.Success, "Category Updated", null);
+                };
+
+                return new Result(ResultStatus.Success, "No Such Category Found", null);
+            }
+            catch (Exception ex)
+            {
+                return new Result(ResultStatus.Error, "An error occured", ex.Message);
+            }
+            
         }
     }
 }

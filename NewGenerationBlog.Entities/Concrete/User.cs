@@ -24,5 +24,6 @@ namespace NewGenerationBlog.Entities.Concrete
         public Role Role{ get; set; }
 
         public ICollection<Post> Posts { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }

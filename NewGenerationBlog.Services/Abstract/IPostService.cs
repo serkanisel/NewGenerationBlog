@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using NewGenerationBlog.Entities.Dtos;
 using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 
@@ -10,9 +11,9 @@ namespace NewGenerationBlog.Services.Abstract
         Task<IDataResult<PostListDto>> GetAll();
         Task<IDataResult<PostListDto>> GetAllByNoneDeleted();
         Task<IDataResult<PostListDto>> GetAllByCategory(int categoryId);
-        Task<IResult> Add(PostAddDto postAddDto, int createdById);
+        Task<IDataResult<PostDto>> Add(PostAddDto postAddDto, int createdById);
         Task<IResult> Update(PostUpdateDto postUpdateDto);
-        Task<IDataResult<PostListDto>> GetAllByUserId(int userId);
+        Task<IDataResult<IList<PostDto>>> GetAllByUserId(int userId);
 
         Task<IResult> Delete(int postID);
         Task<IResult> HardDelete(int postID);

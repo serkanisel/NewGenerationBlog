@@ -13,3 +13,18 @@
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/refint/NewGenerationBlog.Entities.dll
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.pdb
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/ref/NewGenerationBlog.Entities.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Entities.deps.json
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Entities.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Entities.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Shared.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/bin/Debug/net5.0/NewGenerationBlog.Shared.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.AssemblyReference.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.AssemblyInfoInputs.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.AssemblyInfo.cs
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.CoreCompileInputs.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.csproj.CopyComplete
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/refint/NewGenerationBlog.Entities.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/NewGenerationBlog.Entities.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Entities/obj/Debug/net5.0/ref/NewGenerationBlog.Entities.dll

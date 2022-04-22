@@ -18,3 +18,23 @@
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.pdb
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.genruntimeconfig.cache
 /Users/serkanisel/Projects/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/ref/NewGenerationBlog.Data.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Data.deps.json
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Data.runtimeconfig.json
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Data.runtimeconfig.dev.json
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Data.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Data.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Entities.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Shared.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Entities.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/bin/Debug/net5.0/NewGenerationBlog.Shared.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.csproj.AssemblyReference.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.AssemblyInfoInputs.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.AssemblyInfo.cs
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.csproj.CoreCompileInputs.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.csproj.CopyComplete
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/refint/NewGenerationBlog.Data.dll
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.pdb
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/NewGenerationBlog.Data.genruntimeconfig.cache
+/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/obj/Debug/net5.0/ref/NewGenerationBlog.Data.dll

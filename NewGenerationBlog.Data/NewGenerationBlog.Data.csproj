@@ -17,6 +17,7 @@
     <None Remove="Concrete\EntityFramework\Repositories\" />
     <None Remove="Migrations\" />
     <None Remove="Microsoft.EntityFrameworkCore.Relational" />
+    <None Remove="Concrete\EntityFramework\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
@@ -26,6 +27,7 @@
     <Folder Include="Concrete\EntityFramework\Mapping\" />
     <Folder Include="Concrete\EntityFramework\Repositories\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Concrete\EntityFramework\Data\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />

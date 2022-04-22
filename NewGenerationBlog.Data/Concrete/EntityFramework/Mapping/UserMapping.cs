@@ -37,27 +37,6 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.HasOne<Role>(p => p.Role).WithMany(r => r.Users).HasForeignKey(p => p.RoleId);
 
             builder.ToTable("Users");
-
-            builder.HasData(new User
-            {
-                Id = 1,
-                RoleId = 1,
-                FirstName = "Serkan",
-                LastName = "İşel",
-                Username = "sisel",
-                Email = "serkanisel@gmail.com",
-                IsDeleted = false,
-                CreatedById = 1,
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now,
-                BirthDate = Convert.ToDateTime("1980-10-23"),
-                Description = "Owner Of the system",
-                Mobile = "532 586 6292",
-                Picture = "",
-                PasswordHash = Encoding.ASCII.GetBytes("1024b3486faaede8904e4fe56aff2ff1")
-
-            });
-
         }
     }
 }
