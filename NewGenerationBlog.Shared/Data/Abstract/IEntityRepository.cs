@@ -11,7 +11,7 @@ namespace NewGenerationBlog.Shared.Data.Abstract
         //sample usage of method :  var kullanici = repository.GetAsync(k => k.Id==15, k => k.users, k => k.comments) 
         Task<T> GetAsync(Expression<Func<T,bool>> predicate, params Expression<Func<T,object>>[] includeProperties);
 
-        Task<IList<T>> GetAllAsync(Expression<Func<T,bool>> predicate = null, params Expression<Func<T,object>>[] includeProperties);
+        Task<IList<T>> GetAllAsync(Expression<Func<T,bool>> predicate = null, int recordCount = 0, params Expression<Func<T,object>>[] includeProperties);
 
         Task AddAsync(T entity);
 

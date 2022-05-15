@@ -9,6 +9,7 @@ using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.ComplextTypes;
 using NewGenerationBlog.Shared.Utilities.Results.Concrete;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NewGenerationBlog.Services.Concrete
 {
@@ -72,10 +73,36 @@ namespace NewGenerationBlog.Services.Concrete
         public async Task<IDataResult<CategoryDto>> Get(int categoryID)
         {
             var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryID, c => c.Posts);
-            var categoryDto = _mapper.Map<CategoryDto>(category);
+            CategoryDto categoryDto = new CategoryDto();
 
             if (category != null)
             {
+                categoryDto.CreatedById = category.CreatedById;
+                categoryDto.CreatedDate = category.CreatedDate;
+                categoryDto.Description = category.Description;
+                categoryDto.Id = category.Id;
+                categoryDto.ModifiedDate = category.ModifiedDate;
+                categoryDto.Name = category.Name;
+
+                categoryDto.Posts = new List<PostDto>();
+                foreach (var item in category.Posts)
+                {
+                    PostDto pstDto = new PostDto();
+                    pstDto.Content = item.Content;
+                    pstDto.CreatedDate = item.CreatedDate;
+                    pstDto.Date = item.Date;
+                    pstDto.Id = item.Id;
+                    pstDto.ModifiedDate = item.ModifiedDate;
+                    pstDto.SeoAuthor = item.SeoAuthor;
+                    pstDto.SeoDecription = item.SeoDecription;
+                    pstDto.SeoTags = item.SeoTags;
+                    pstDto.Thumbnail = item.Thumbnail;
+                    pstDto.Title = item.Title;
+                    pstDto.ViewsCount = item.ViewsCount;
+                    categoryDto.Posts.Add(pstDto);
+                }
+                categoryDto.PostCount = category.Posts.Count();
+
                 return new DataResult<CategoryDto>(ResultStatus.Success, categoryDto);
             }
 
@@ -84,7 +111,7 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<CategoryListDto>> GetAll()
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(null, c => c.Posts);
+            var categories = await _unitOfWork.Categories.GetAllAsync(null,0, c => c.Posts);
 
             var categoryDtoList = _mapper.Map<IList<CategoryDto>>(categories);
 
@@ -102,6 +129,34 @@ namespace NewGenerationBlog.Services.Concrete
         public async Task<IDataResult<IList<CategoryDto>>> GetAllByNoneDeleted(int userId)
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false && c.UserId==userId);
+
+            if (categories.Count > -1)
+            {
+                
+                IList<CategoryDto> result = new List<CategoryDto>();
+                foreach (var item in categories.OrderByDescending(p => p.CreatedDate))
+                {
+                    CategoryDto categoryDto = new CategoryDto();
+                    categoryDto.Id = item.Id;
+                    categoryDto.Name = item.Name;
+                    categoryDto.Description = item.Description;
+                    categoryDto.PostCount = await _unitOfWork.Posts.CountAsync(p => p.CategoryId == item.Id);
+                    categoryDto.CreatedDate = item.CreatedDate;
+                    categoryDto.ModifiedDate = item.ModifiedDate;
+
+                    result.Add(categoryDto);
+                }
+
+                
+                return new DataResult<IList<CategoryDto>>(ResultStatus.Success, result);
+            }
+
+            return new DataResult<IList<CategoryDto>>(ResultStatus.Error, "No Category Found", null);
+        }
+
+        public async Task<IDataResult<IList<CategoryDto>>> GetCategoriesLimitedByUserId(CategoryGetDto categoryGetDto)
+        {
+            var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false && c.UserId == categoryGetDto.UserId ,categoryGetDto.RecordCount);
 
             if (categories.Count > -1)
             {

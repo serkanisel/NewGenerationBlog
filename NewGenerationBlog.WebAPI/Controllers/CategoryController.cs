@@ -21,10 +21,18 @@ namespace NewGenerationBlog.WebAPI.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpPost("GetCategoriesByUser")]
+        public async Task<IActionResult> GetCategoriesByUser(CategoryGetDto categoryGetDto)
         {
-            var Categories = await _categoryService.GetAllByNoneDeleted(id);
+            var Categories = await _categoryService.GetCategoriesLimitedByUserId(categoryGetDto);
+
+            return Ok(Categories);
+        }
+
+        [HttpGet("GetByUserId/{userid}")]
+        public async Task<IActionResult> GetByUserId(int userid)
+        {
+            var Categories = await _categoryService.GetAllByNoneDeleted(userid);
 
             return Ok(Categories);
         }
@@ -42,6 +50,14 @@ namespace NewGenerationBlog.WebAPI.Controllers
             var result = await _categoryService.Update(categoryUpdateDto);
 
             return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var Category = await _categoryService.Get(id);
+
+            return Ok(Category);
         }
     }
 }

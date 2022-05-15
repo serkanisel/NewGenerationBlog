@@ -38,13 +38,16 @@ namespace NewGenerationBlog.Shared.Data.Concrete.EntityFramework
             await Task.Run(() => { _context.Set<TEntity>().Remove(entity); });
         }
 
-        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includeProperties)
+        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, int recordCount=0, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
             
             if(predicate !=null)
             {
+                if(recordCount==0)
                 query = query.Where(predicate);
+                else
+                    query = query.Where(predicate).Take(recordCount);
             }
 
             if(includeProperties.Any())

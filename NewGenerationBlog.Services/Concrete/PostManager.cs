@@ -37,12 +37,13 @@ namespace NewGenerationBlog.Services.Concrete
                 post.Title = postAddDto.Title;
                 post.Content = postAddDto.Content;
                 post.Thumbnail = postAddDto.Thumbnail;
-                post.SeoAuthor = postAddDto.SeoAuthor;
-                post.SeoDecription = postAddDto.SeoDescription;
-                post.SeoTags = postAddDto.SeoTags;
                 post.CategoryId = postAddDto.CategoryId;
                 post.UserId = createdById;
-
+                post.Thumbnail = "";
+                post.SeoAuthor = "";
+                post.SeoDecription = "";
+                post.SeoTags = "";
+                    
                 await _unitOfWork.Posts.AddAsync(post);
                 await _unitOfWork.SaveAsync();
 
@@ -84,10 +85,26 @@ namespace NewGenerationBlog.Services.Concrete
         public async Task<IDataResult<PostDto>> Get(int postID)
         {
             var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID, p => p.User, p => p.Category);
-            var postDto = _mapper.Map<PostDto>(post);
 
+            PostDto postDto = new PostDto();
             if (post != null)
             {
+                postDto.Content = post.Content;
+                postDto.CreatedDate = post.CreatedDate;
+                postDto.Date = post.Date;
+                postDto.Id = post.Id;
+                postDto.ModifiedDate = post.ModifiedDate;
+                postDto.SeoAuthor = post.SeoAuthor;
+                postDto.SeoDecription = post.SeoDecription;
+                postDto.SeoTags = post.SeoTags;
+                postDto.Thumbnail = post.Thumbnail;
+                postDto.Title = post.Title;
+                postDto.ViewsCount = post.ViewsCount;
+
+                postDto.Category = new CategoryDto();
+                postDto.Category.Name = post.Category.Name;
+                postDto.Category.Id = post.Category.Id;
+
                 return new DataResult<PostDto>(ResultStatus.Success, postDto);
             }
 
@@ -96,7 +113,7 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<PostListDto>> GetAll()
         {
-            var posts = await _unitOfWork.Posts.GetAllAsync(null, p => p.User, p => p.Category);
+            var posts = await _unitOfWork.Posts.GetAllAsync(null, 0, p => p.User, p => p.Category);
 
             if (posts.Count > -1)
             {
@@ -111,7 +128,7 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<PostListDto>> GetAllByCategory(int categoryId)
         {
-            var posts = await _unitOfWork.Posts.GetAllAsync(p => p.CategoryId == categoryId && p.IsDeleted == false, p => p.User, p => p.Category);
+            var posts = await _unitOfWork.Posts.GetAllAsync(p => p.CategoryId == categoryId && p.IsDeleted == false, 0,p => p.User, p => p.Category);
 
             if (posts.Count > -1)
             {
@@ -126,7 +143,7 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<PostListDto>> GetAllByNoneDeleted()
         {
-            var posts = await _unitOfWork.Posts.GetAllAsync(p => p.IsDeleted == false, p => p.User, p => p.Category);
+            var posts = await _unitOfWork.Posts.GetAllAsync(p => p.IsDeleted == false, 0,p => p.User, p => p.Category);
 
             if (posts.Count > -1)
             {
@@ -143,7 +160,7 @@ namespace NewGenerationBlog.Services.Concrete
         {
             try
             {
-                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == userId && p.IsDeleted == false, p => p.User, p => p.Category);
+                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == userId && p.IsDeleted == false, 0,p => p.User, p => p.Category);
 
                 if (posts.Count > -1)
                 {
