@@ -35,7 +35,7 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
 
 
             //foreing keys
-            builder.HasOne<Category>(a => a.Category).WithMany(c => c.Posts).HasForeignKey(a => a.CategoryId).HasConstraintName("FK_Post_Category");
+            //builder.HasOne<Category>(a => a.Category).WithMany(c => c.Posts).HasForeignKey(a => a.CategoryId).HasConstraintName("FK_Post_Category");
             builder.HasOne<User>(a => a.User).WithMany(c => c.Posts).HasForeignKey(a => a.UserId).HasConstraintName("FK_Post_User");
 
             builder.ToTable("Posts");

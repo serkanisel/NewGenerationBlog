@@ -59,6 +59,14 @@ namespace NewGenerationBlog.WebAPI.Controllers
 
             return Ok(Category);
         }
+
+        [HttpPost("SoftDelete")]
+        public async Task<IActionResult> SoftDelete(CategoryDeleteDto categoryDeleteDto)
+        {
+            var result = await _categoryService.Delete(categoryDeleteDto.Id);
+
+            return Ok(result);
+        }
     }
 }
 
