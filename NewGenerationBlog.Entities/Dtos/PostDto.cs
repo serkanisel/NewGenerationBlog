@@ -15,7 +15,7 @@ namespace NewGenerationBlog.Entities.Dtos
         public string SeoAuthor { get; set; }
         public string SeoDecription { get; set; }
         public string SeoTags { get; set; }
-
+        public string ContentText { get; set; }
         public CategoryDto Category { get; set; }
 
         public UserDto User { get; set; }

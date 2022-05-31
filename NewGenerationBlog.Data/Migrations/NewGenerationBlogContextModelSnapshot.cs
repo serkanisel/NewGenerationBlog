@@ -64,13 +64,17 @@ namespace NewGenerationBlog.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("integer");
 
                     b.Property<int>("CommentCount")
                         .HasColumnType("integer");
 
                     b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ContentText")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -130,68 +134,6 @@ namespace NewGenerationBlog.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            CommentCount = 0,
-                            Content = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.",
-                            CreatedById = 1,
-                            CreatedDate = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(760),
-                            Date = new DateTime(2022, 4, 17, 18, 37, 36, 641, DateTimeKind.Local).AddTicks(8390),
-                            IsDeleted = false,
-                            IsPublic = false,
-                            ModifiedDate = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(1290),
-                            SeoAuthor = "Serkan İşel",
-                            SeoDecription = "C# 9.0 ve .net 5 yenilikleri",
-                            SeoTags = "C#,C# 9, .NET5, .NET Framework, .NET Core",
-                            Thumbnail = "Default.jpg",
-                            Title = "C# 9.0 ve .net 5 yenilikleri",
-                            UserId = 1,
-                            ViewsCount = 100
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 2,
-                            CommentCount = 0,
-                            Content = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.",
-                            CreatedById = 1,
-                            CreatedDate = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(2290),
-                            Date = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(2280),
-                            IsDeleted = false,
-                            IsPublic = false,
-                            ModifiedDate = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(2290),
-                            SeoAuthor = "Serkan İşel",
-                            SeoDecription = "C++ nedir?",
-                            SeoTags = "C++,,C",
-                            Thumbnail = "Default.jpg",
-                            Title = "C++ nedir?",
-                            UserId = 1,
-                            ViewsCount = 90
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 3,
-                            CommentCount = 0,
-                            Content = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.",
-                            CreatedById = 1,
-                            CreatedDate = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(2300),
-                            Date = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(2300),
-                            IsDeleted = false,
-                            IsPublic = false,
-                            ModifiedDate = new DateTime(2022, 4, 17, 18, 37, 36, 642, DateTimeKind.Local).AddTicks(2300),
-                            SeoAuthor = "Serkan İşel",
-                            SeoDecription = "Javascript Nedir?",
-                            SeoTags = "Javascript",
-                            Thumbnail = "Default.jpg",
-                            Title = "Javascript Nedir?",
-                            UserId = 1,
-                            ViewsCount = 110
-                        });
                 });
 
             modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Role", b =>
@@ -370,10 +312,7 @@ namespace NewGenerationBlog.Data.Migrations
                 {
                     b.HasOne("NewGenerationBlog.Entities.Concrete.Category", "Category")
                         .WithMany("Posts")
-                        .HasForeignKey("CategoryId")
-                        .HasConstraintName("FK_Post_Category")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("NewGenerationBlog.Entities.Concrete.User", "User")
                         .WithMany("Posts")

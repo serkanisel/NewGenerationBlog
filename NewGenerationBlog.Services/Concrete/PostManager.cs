@@ -9,6 +9,7 @@ using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.ComplextTypes;
 using NewGenerationBlog.Shared.Utilities.Results.Concrete;
 using System.Collections.Generic;
+using System.Net;
 
 namespace NewGenerationBlog.Services.Concrete
 {
@@ -28,22 +29,28 @@ namespace NewGenerationBlog.Services.Concrete
         {
             try
             {
-                var cat = await _unitOfWork.Categories.GetAsync(p => p.Id == postAddDto.CategoryId);
+                if (postAddDto.CategoryId != 0)
+                {
+                    var cat = await _unitOfWork.Categories.GetAsync(p => p.Id == postAddDto.CategoryId);
 
-                if (cat == null)
-                    return new DataResult<PostDto>(ResultStatus.Error, $"No Such Category Found", null);
+                    if (cat == null)
+                        return new DataResult<PostDto>($"No Such Category Found", null, HttpStatusCode.BadRequest);
+                }
 
                 Post post = new Post();
                 post.Title = postAddDto.Title;
                 post.Content = postAddDto.Content;
                 post.Thumbnail = postAddDto.Thumbnail;
+                if(postAddDto.CategoryId!=0)
                 post.CategoryId = postAddDto.CategoryId;
                 post.UserId = createdById;
                 post.Thumbnail = "";
                 post.SeoAuthor = "";
                 post.SeoDecription = "";
                 post.SeoTags = "";
-                    
+                post.ContentText = postAddDto.ContentText;
+                
+                
                 await _unitOfWork.Posts.AddAsync(post);
                 await _unitOfWork.SaveAsync();
 
@@ -54,37 +61,36 @@ namespace NewGenerationBlog.Services.Concrete
                 postDto.Content = post.Content;
                 postDto.Title = post.Title;
 
-                return new DataResult<PostDto>(ResultStatus.Success, $"Post Added Successfully", postDto);
+                return new DataResult<PostDto>($"Post Added Successfully", postDto);
             }
             catch (Exception ex)
             {
-                return new DataResult<PostDto>(ResultStatus.Error, $"An Error Occured", null, ex.Message);
+                return new DataResult<PostDto>($"An Error Occured", null, ex.Message,HttpStatusCode.InternalServerError);
             }
 
         }
 
         public async Task<IResult> Delete(int postID)
         {
-            var result = await _unitOfWork.Posts.AnyAsync(p => p.Id == postID);
+            var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID);
 
-            if (result)
+            if (post!=null)
             {
-                var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID);
-
                 post.IsDeleted = true;
                 post.ModifiedDate = DateTime.Now;
 
-                await _unitOfWork.Posts.UpdateAsync(post).ContinueWith(p => _unitOfWork.SaveAsync());
+                await _unitOfWork.Posts.UpdateAsync(post);
+                await _unitOfWork.SaveAsync();
 
-                return new Result(ResultStatus.Success, "Post was deleted");
+                return new Result("Post was deleted");
             }
 
-            return new Result(ResultStatus.Error, "No Post Such Found");
+            return new Result("No Post Such Found",HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<PostDto>> Get(int postID)
         {
-            var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID, p => p.User, p => p.Category);
+            var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID, p => p.User, p => p.Category , p => p.TagPosts);
 
             PostDto postDto = new PostDto();
             if (post != null)
@@ -101,14 +107,17 @@ namespace NewGenerationBlog.Services.Concrete
                 postDto.Title = post.Title;
                 postDto.ViewsCount = post.ViewsCount;
 
-                postDto.Category = new CategoryDto();
-                postDto.Category.Name = post.Category.Name;
-                postDto.Category.Id = post.Category.Id;
+                if (post.Category != null)
+                {
+                    postDto.Category = new CategoryDto();
+                    postDto.Category.Name = post.Category.Name;
+                    postDto.Category.Id = post.Category.Id;
+                }
 
-                return new DataResult<PostDto>(ResultStatus.Success, postDto);
+                return new DataResult<PostDto>(postDto);
             }
 
-            return new DataResult<PostDto>(ResultStatus.Error, "No Post Such Found", null);
+            return new DataResult<PostDto>("No Post Such Found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<PostListDto>> GetAll()
@@ -117,13 +126,13 @@ namespace NewGenerationBlog.Services.Concrete
 
             if (posts.Count > -1)
             {
-                return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
+                return new DataResult<PostListDto>(new PostListDto
                 {
                     Posts = posts
                 });
             }
 
-            return new DataResult<PostListDto>(ResultStatus.Error, "No Post Found", null);
+            return new DataResult<PostListDto>( "No Post Found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<PostListDto>> GetAllByCategory(int categoryId)
@@ -132,13 +141,13 @@ namespace NewGenerationBlog.Services.Concrete
 
             if (posts.Count > -1)
             {
-                return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
+                return new DataResult<PostListDto>(new PostListDto
                 {
                     Posts = posts
                 });
             }
 
-            return new DataResult<PostListDto>(ResultStatus.Error, "No Post Found", null);
+            return new DataResult<PostListDto>("No Post Found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<PostListDto>> GetAllByNoneDeleted()
@@ -147,13 +156,13 @@ namespace NewGenerationBlog.Services.Concrete
 
             if (posts.Count > -1)
             {
-                return new DataResult<PostListDto>(ResultStatus.Success, new PostListDto
+                return new DataResult<PostListDto>(new PostListDto
                 {
                     Posts = posts
                 });
             }
 
-            return new DataResult<PostListDto>(ResultStatus.Error, "No Post Found", null);
+            return new DataResult<PostListDto>("No Post Found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<IList<PostDto>>> GetAllByUserId(int userId)
@@ -180,28 +189,32 @@ namespace NewGenerationBlog.Services.Concrete
                         pDto.Thumbnail = item.Thumbnail;
                         pDto.Title = item.Title;
                         pDto.ViewsCount = item.ViewsCount;
+                        pDto.ContentText = item.ContentText;
+                        pDto.Id = item.Id;
 
                         pDto.User = new UserDto();
                         pDto.User.Id = item.User.Id;
                         pDto.User.FirstName = item.User.FirstName;
                         pDto.User.LastName = item.User.LastName;
 
-                        pDto.Category = new CategoryDto();
-                        pDto.Category.Id = item.Category.Id;
-                        pDto.Category.Name = item.Category.Name;
-                        pDto.Category.Description = item.Category.Description;
-
+                        if (item.CategoryId != null)
+                        {
+                            pDto.Category = new CategoryDto();
+                            pDto.Category.Id = item.Category.Id;
+                            pDto.Category.Name = item.Category.Name;
+                            pDto.Category.Description = item.Category.Description;
+                        }
                         postDtos.Add(pDto);
                     }
 
-                    return new DataResult<IList<PostDto>>(ResultStatus.Success, null, postDtos);
+                    return new DataResult<IList<PostDto>>(null, postDtos);
                 }
 
-                return new DataResult<IList<PostDto>>(ResultStatus.Error, "No Post Found", null);
+                return new DataResult<IList<PostDto>>("No Post Found", null,HttpStatusCode.BadRequest);
             }
             catch (Exception ex)
             {
-                return new DataResult<IList<PostDto>>(ResultStatus.Error, "An Error Occured", null, ex.Message);
+                return new DataResult<IList<PostDto>>("An Error Occured", null, ex.Message,HttpStatusCode.InternalServerError);
             }
         }
 
@@ -218,10 +231,10 @@ namespace NewGenerationBlog.Services.Concrete
 
                 await _unitOfWork.Posts.DeleteAsync(post).ContinueWith(p => _unitOfWork.SaveAsync());
 
-                return new Result(ResultStatus.Success, "Post was deleted from database");
+                return new Result("Post was deleted from database");
             }
 
-            return new Result(ResultStatus.Error, "No Post Such Found");
+            return new Result("No Post Such Found",HttpStatusCode.BadRequest);
         }
 
         public async Task<IResult> Update(PostUpdateDto postUpdateDto)
@@ -232,7 +245,7 @@ namespace NewGenerationBlog.Services.Concrete
 
                 if(post == null)
                 {
-                    return new Result(ResultStatus.Error, "No Such Post Found");
+                    return new Result("No Such Post Found",HttpStatusCode.BadRequest);
                 }
 
                 post.Title = postUpdateDto.Title;
@@ -246,11 +259,11 @@ namespace NewGenerationBlog.Services.Concrete
                 await _unitOfWork.Posts.UpdateAsync(post);
                 await _unitOfWork.SaveAsync();
 
-                return new Result(ResultStatus.Success, "Updated was successfully");
+                return new Result("Updated was successfully");
             }
             catch (Exception ex)
             {
-                return new Result(ResultStatus.Error, "An Error Occured",ex.Message);
+                return new Result("An Error Occured",ex.Message,HttpStatusCode.InternalServerError);
             }
 
         }

@@ -18,5 +18,7 @@ namespace NewGenerationBlog.Entities.Dtos
 
         [MinLength(20, ErrorMessage = "Minimum length is 20 caracters.")]
         public string Content { get; set; }
+
+        public string ContentText { get; set; }
     }
 }

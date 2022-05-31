@@ -7,4 +7,10 @@
   <ItemGroup>
     <ProjectReference Include="..\NewGenerationBlog.Shared\NewGenerationBlog.Shared.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Dtos\RequestDto\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dtos\RequestDto\" />
+  </ItemGroup>
 </Project>

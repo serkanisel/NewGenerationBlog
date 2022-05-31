@@ -10,6 +10,7 @@ using NewGenerationBlog.Shared.Utilities.Results.ComplextTypes;
 using NewGenerationBlog.Shared.Utilities.Results.Concrete;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace NewGenerationBlog.Services.Concrete
 {
@@ -44,11 +45,11 @@ namespace NewGenerationBlog.Services.Concrete
                     CreatedDate = category.CreatedDate,
                 };
                
-                return new DataResult<CategoryDto>(ResultStatus.Success, "Category added succesfully" ,cDto);
+                return new DataResult<CategoryDto>( "Category added succesfully" ,cDto);
             }
             catch (Exception ex)
             {
-                return new DataResult<CategoryDto>(ResultStatus.Error,"An error occured",null,ex.Message);
+                return new DataResult<CategoryDto>("An error occured",null,ex.Message,HttpStatusCode.InternalServerError);
             }
         }
 
@@ -64,15 +65,15 @@ namespace NewGenerationBlog.Services.Concrete
                 await _unitOfWork.Categories.UpdateAsync(category);
                 await _unitOfWork.SaveAsync();
 
-                return new Result(ResultStatus.Success, $"{category.Name} is deleted");
+                return new Result( $"{category.Name} is deleted");
             }
 
-            return new Result(ResultStatus.Error, "No Such Category Found");
+            return new Result("No Such Category Found",HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<CategoryDto>> Get(int categoryID)
         {
-            var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryID, c => c.Posts);
+            var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryID , c => c.Posts.Where(p => p.IsDeleted==false));
             CategoryDto categoryDto = new CategoryDto();
 
             if (category != null)
@@ -87,26 +88,28 @@ namespace NewGenerationBlog.Services.Concrete
                 categoryDto.Posts = new List<PostDto>();
                 foreach (var item in category.Posts)
                 {
-                    PostDto pstDto = new PostDto();
-                    pstDto.Content = item.Content;
-                    pstDto.CreatedDate = item.CreatedDate;
-                    pstDto.Date = item.Date;
-                    pstDto.Id = item.Id;
-                    pstDto.ModifiedDate = item.ModifiedDate;
-                    pstDto.SeoAuthor = item.SeoAuthor;
-                    pstDto.SeoDecription = item.SeoDecription;
-                    pstDto.SeoTags = item.SeoTags;
-                    pstDto.Thumbnail = item.Thumbnail;
-                    pstDto.Title = item.Title;
-                    pstDto.ViewsCount = item.ViewsCount;
-                    categoryDto.Posts.Add(pstDto);
+                        PostDto pstDto = new PostDto();
+                        pstDto.Content = item.Content;
+                        pstDto.CreatedDate = item.CreatedDate;
+                        pstDto.Date = item.Date;
+                        pstDto.Id = item.Id;
+                        pstDto.ModifiedDate = item.ModifiedDate;
+                        pstDto.SeoAuthor = item.SeoAuthor;
+                        pstDto.SeoDecription = item.SeoDecription;
+                        pstDto.SeoTags = item.SeoTags;
+                        pstDto.Thumbnail = item.Thumbnail;
+                        pstDto.Title = item.Title;
+                        pstDto.ViewsCount = item.ViewsCount;
+                        pstDto.ContentText = item.ContentText;
+
+                        categoryDto.Posts.Add(pstDto);
                 }
                 categoryDto.PostCount = category.Posts.Count();
 
-                return new DataResult<CategoryDto>(ResultStatus.Success, categoryDto);
+                return new DataResult<CategoryDto>( categoryDto);
             }
 
-            return new DataResult<CategoryDto>(ResultStatus.Error, "No category found", null);
+            return new DataResult<CategoryDto>( "No category found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<CategoryListDto>> GetAll()
@@ -117,13 +120,13 @@ namespace NewGenerationBlog.Services.Concrete
 
             if (categories.Count > -1)
             {
-                return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
+                return new DataResult<CategoryListDto>( new CategoryListDto
                 {
                     Categories = categoryDtoList
                 });
             }
 
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "No Category Found", null);
+            return new DataResult<CategoryListDto>("No Category Found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<IList<CategoryDto>>> GetAllByNoneDeleted(int userId)
@@ -140,7 +143,7 @@ namespace NewGenerationBlog.Services.Concrete
                     categoryDto.Id = item.Id;
                     categoryDto.Name = item.Name;
                     categoryDto.Description = item.Description;
-                    categoryDto.PostCount = await _unitOfWork.Posts.CountAsync(p => p.CategoryId == item.Id);
+                    categoryDto.PostCount = await _unitOfWork.Posts.CountAsync(p => p.CategoryId == item.Id && p.IsDeleted==false);
                     categoryDto.CreatedDate = item.CreatedDate;
                     categoryDto.ModifiedDate = item.ModifiedDate;
 
@@ -148,10 +151,10 @@ namespace NewGenerationBlog.Services.Concrete
                 }
 
                 
-                return new DataResult<IList<CategoryDto>>(ResultStatus.Success, result);
+                return new DataResult<IList<CategoryDto>>( result);
             }
 
-            return new DataResult<IList<CategoryDto>>(ResultStatus.Error, "No Category Found", null);
+            return new DataResult<IList<CategoryDto>>("No Category Found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IDataResult<IList<CategoryDto>>> GetCategoriesLimitedByUserId(CategoryGetDto categoryGetDto)
@@ -174,10 +177,10 @@ namespace NewGenerationBlog.Services.Concrete
                     result.Add(categoryDto);
                 }
 
-                return new DataResult<IList<CategoryDto>>(ResultStatus.Success, result);
+                return new DataResult<IList<CategoryDto>>( result);
             }
 
-            return new DataResult<IList<CategoryDto>>(ResultStatus.Error, "No Category Found", null);
+            return new DataResult<IList<CategoryDto>>("No Category Found", null,HttpStatusCode.BadRequest);
         }
 
         public async Task<IResult> HardDelete(int categoryID)
@@ -189,10 +192,10 @@ namespace NewGenerationBlog.Services.Concrete
                 await _unitOfWork.Categories.DeleteAsync(category);
                 await _unitOfWork.SaveAsync();
 
-                return new Result(ResultStatus.Success, $"{category.Name} is deleted from Database");
+                return new Result( $"{category.Name} is deleted from Database");
             }
 
-            return new Result(ResultStatus.Error, "No Such Category Found");
+            return new Result( "No Such Category Found",HttpStatusCode.BadRequest);
         }
 
         public async Task<IResult> Update(CategoryUpdateDto categoryUpdateDto)
@@ -210,14 +213,14 @@ namespace NewGenerationBlog.Services.Concrete
                     await _unitOfWork.Categories.UpdateAsync(category);
                     await _unitOfWork.SaveAsync();
 
-                    return new Result(ResultStatus.Success, "Category Updated", null);
+                    return new Result( "Category Updated", null);
                 };
 
-                return new Result(ResultStatus.Success, "No Such Category Found", null);
+                return new Result( "No Such Category Found", null,HttpStatusCode.BadRequest);
             }
             catch (Exception ex)
             {
-                return new Result(ResultStatus.Error, "An error occured", ex.Message);
+                return new Result("An error occured", ex.Message,HttpStatusCode.InternalServerError);
             }
             
         }
