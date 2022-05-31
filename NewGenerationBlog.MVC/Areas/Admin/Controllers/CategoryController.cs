@@ -26,10 +26,6 @@ namespace NewGenerationBlog.MVC.Areas.Admin.Controllers
         {
             IDataResult<CategoryListDto> result = await _categoryService.GetAll();
 
-            if(result.ResultStatus==ResultStatus.Success)
-            {
-                return View(result.Data);
-            }
 
             return View();
         }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NewGenerationBlog.Entities.Dtos;
 using NewGenerationBlog.Services.Abstract;
+using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,50 +23,39 @@ namespace NewGenerationBlog.WebAPI.Controllers
         }
 
         [HttpPost("GetCategoriesByUser")]
-        public async Task<IActionResult> GetCategoriesByUser(CategoryGetDto categoryGetDto)
+        public async Task<IDataResult<IList<CategoryDto>>> GetCategoriesByUser(CategoryGetDto categoryGetDto)
         {
-            var Categories = await _categoryService.GetCategoriesLimitedByUserId(categoryGetDto);
-
-            return Ok(Categories);
+            return await _categoryService.GetCategoriesLimitedByUserId(categoryGetDto);
         }
 
         [HttpGet("GetByUserId/{userid}")]
-        public async Task<IActionResult> GetByUserId(int userid)
+        public async Task<IDataResult<IList<CategoryDto>>> GetByUserId(int userid)
         {
-            var Categories = await _categoryService.GetAllByNoneDeleted(userid);
-
-            return Ok(Categories);
+            return await _categoryService.GetAllByNoneDeleted(userid);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CategoryAddDto categoryAddDto)
+        public async Task<IDataResult<CategoryDto>> Post(CategoryAddDto categoryAddDto)
         {
-            var result=await _categoryService.Add(categoryAddDto,1);
-            return Ok(result);
+            return await _categoryService.Add(categoryAddDto,1);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(CategoryUpdateDto categoryUpdateDto)
+        public async Task<IResult> Put(CategoryUpdateDto categoryUpdateDto)
         {
-            var result = await _categoryService.Update(categoryUpdateDto);
-
-            return Ok(result);
+            return await _categoryService.Update(categoryUpdateDto);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IDataResult<CategoryDto>> Get(int id)
         {
-            var Category = await _categoryService.Get(id);
-
-            return Ok(Category);
+            return await _categoryService.Get(id);
         }
 
         [HttpPost("SoftDelete")]
-        public async Task<IActionResult> SoftDelete(CategoryDeleteDto categoryDeleteDto)
+        public async Task<IResult> SoftDelete(CategoryDeleteDto categoryDeleteDto)
         {
-            var result = await _categoryService.Delete(categoryDeleteDto.Id);
-
-            return Ok(result);
+            return await _categoryService.Delete(categoryDeleteDto.Id);
         }
     }
 }

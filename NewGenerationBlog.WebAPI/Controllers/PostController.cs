@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NewGenerationBlog.Entities.Dtos;
 using NewGenerationBlog.Services.Abstract;
+using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 
 namespace NewGenerationBlog.WebAPI.Controllers
 {
@@ -18,35 +20,33 @@ namespace NewGenerationBlog.WebAPI.Controllers
         }
 
 		[HttpGet("{id}")]
-		public async Task<IActionResult> Get(int id)
+		public async Task<IDataResult<PostDto>> Get(int id)
 		{
-			var result = await _postService.Get(id);
-
-			return Ok(result);
+			return await _postService.Get(id);
 		}
 
 		[HttpGet("GetAllByUserId/{userid}")]
-		public async Task<IActionResult> GetAllByUserId(int userid)
+		public async Task<IDataResult<IList<PostDto>>> GetAllByUserId(int userid)
 		{
-			var result = await _postService.GetAllByUserId(userid);
-
-			return Ok(result);
+			return await _postService.GetAllByUserId(userid);
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Post(PostAddDto postAddDto)
+		public async Task<IDataResult<PostDto>> Post(PostAddDto postAddDto)
 		{
-			var result = await _postService.Add(postAddDto,1);
-
-			return Ok(result);
+			return await _postService.Add(postAddDto,1);
 		}
 
 		[HttpPut]
-		public async Task<IActionResult> Put(PostUpdateDto postUpdateDto)
+		public async Task<IResult> Put(PostUpdateDto postUpdateDto)
 		{
-			var result = await _postService.Update(postUpdateDto);
+			return await _postService.Update(postUpdateDto);
+		}
 
-			return Ok(result);
+		[HttpPost("SoftDelete")]
+		public async Task<IResult> SoftDelete(PostDeleteDto postDeleteDto)
+		{
+			return await _postService.Delete(postDeleteDto.Id);
 		}
 	}
 }

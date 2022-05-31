@@ -8,6 +8,7 @@ namespace NewGenerationBlog.Entities.Concrete
     {
         public string Title { get; set; }
         public string Content { get; set; }
+        public string ContentText { get; set; }
         public string Thumbnail { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
         public int ViewsCount { get; set; } = 0;
@@ -17,7 +18,7 @@ namespace NewGenerationBlog.Entities.Concrete
         public string SeoTags { get; set; }
         public bool IsPublic { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public Category Category { get; set; }
 
         public int UserId { get; set; }

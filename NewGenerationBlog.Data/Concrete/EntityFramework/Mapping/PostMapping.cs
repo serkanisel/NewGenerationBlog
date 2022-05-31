@@ -15,6 +15,10 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(a => a.Title).IsRequired(true);
             builder.Property(a => a.Content).IsRequired();
             builder.Property(a => a.Content).HasColumnType("TEXT");
+
+            builder.Property(a => a.ContentText).IsRequired();
+            builder.Property(a => a.ContentText).HasColumnType("TEXT");
+
             builder.Property(a => a.Date).IsRequired(true);
             builder.Property(a => a.SeoAuthor).IsRequired();
             builder.Property(a => a.SeoAuthor).HasMaxLength(50);

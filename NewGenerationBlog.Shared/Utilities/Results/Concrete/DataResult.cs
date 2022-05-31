@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.ComplextTypes;
 
@@ -6,22 +7,21 @@ namespace NewGenerationBlog.Shared.Utilities.Results.Concrete
 {
     public class DataResult<T> : IDataResult<T>
     {
-        public DataResult(ResultStatus resultStatus, T data)
+        public DataResult(T data,HttpStatusCode httpStatusCode=HttpStatusCode.OK)
         {
-            ResultStatus = resultStatus;
             Data = data;
         }
 
-        public DataResult(ResultStatus resultStatus, string message, T data)
+        public DataResult(string message, T data, HttpStatusCode httpStatusCode = HttpStatusCode.OK)
         {
-            ResultStatus = resultStatus;
+            HttpStatusCode = httpStatusCode;
             Data = data;
             Message = message;
         }
 
-        public DataResult(ResultStatus resultStatus, string message, T data, string errorMessage)
+        public DataResult(string message, T data, string errorMessage, HttpStatusCode httpStatusCode = HttpStatusCode.OK)
         {
-            ResultStatus = resultStatus;
+            HttpStatusCode = httpStatusCode;
             Data = data;
             Message = message;
             ErrorMessage = errorMessage;
@@ -29,10 +29,11 @@ namespace NewGenerationBlog.Shared.Utilities.Results.Concrete
 
         public T Data { get; }
 
-        public ResultStatus ResultStatus { get; }
 
         public string Message { get; }
 
         public string ErrorMessage { get; }
+
+        public HttpStatusCode HttpStatusCode { get; set; }
     }
 }

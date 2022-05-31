@@ -19,7 +19,9 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Contexts
         public DbSet<Tag> Tags { get; set; }
         public DbSet<TagPost> TagPosts { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+           
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
                 optionsBuilder.UseNpgsql(connectionString: @"Server=localhost;Port=5432;Database=NewGenerationBlogDB;User Id=sisel;Password=dana2314;");

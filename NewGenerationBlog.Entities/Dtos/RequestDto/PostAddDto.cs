@@ -8,7 +8,7 @@ namespace NewGenerationBlog.Entities.Dtos
     public class PostAddDto
     {
         [DisplayName("Title")]
-        [Required(ErrorMessage ="{0} is required)")]
+        [Required(ErrorMessage ="{0} is required")]
         [MaxLength(500, ErrorMessage ="Maximum length is 500 caracters.")]
         [MinLength(5, ErrorMessage = "Minimum length is 5 caracters.")]
         public string Title { get; set; }
@@ -37,5 +37,7 @@ namespace NewGenerationBlog.Entities.Dtos
         public string SeoTags { get; set; }
 
         public int CategoryId { get; set; }
+
+        public string ContentText { get; set; }
     }
 }
