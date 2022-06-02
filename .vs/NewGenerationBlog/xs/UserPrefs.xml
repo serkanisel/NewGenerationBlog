@@ -1,18 +1,20 @@
-﻿<Properties StartupConfiguration="{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.ItemProperties.NewGenerationBlog.MVC PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" relfile="NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" line="27" column="1" />
-      <Breakpoint file="/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Services/Concrete/PostManager.cs" relfile="NewGenerationBlog.Services/Concrete/PostManager.cs" line="32" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.NewGenerationBlog.MVC PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.NewGenerationBlog.WebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="NewGenerationBlog.Services/Concrete/PostManager.cs">
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="MVC Project" Name="MVC Project">
+      <Items>
+        <StartupItem ItemId="{5239ED18-7654-4450-A9ED-BD1B7FD10489}" ItemName="NewGenerationBlog.MVC" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+  <MonoDevelop.Ide.Workbench ActiveDocument="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/TagMapping.cs">
     <Files>
       <File FileName="NewGenerationBlog.WebAPI/Startup.cs" Line="54" Column="10" />
-      <File FileName="NewGenerationBlog.WebAPI/Controllers/CategoryController.cs" Line="63" Column="1" />
-      <File FileName="NewGenerationBlog.Services/Concrete/CategoryManager.cs" Line="91" Column="56" />
+      <File FileName="NewGenerationBlog.WebAPI/Controllers/CategoryController.cs" Line="34" Column="55" />
+      <File FileName="NewGenerationBlog.Services/Concrete/CategoryManager.cs" Line="145" Column="64" />
       <File FileName="NewGenerationBlog.Shared/Utilities/Results/Concrete/DataResult.cs" Line="37" Column="1" />
       <File FileName="NewGenerationBlog.WebAPI/Controllers/PostController.cs" Line="37" Column="1" />
       <File FileName="NewGenerationBlog.Shared/Data/Concrete/EntityFramework/EfEntityRepositoryBase.cs" Line="55" Column="56" />
@@ -30,8 +32,8 @@
       <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/UnitOfWork.cs" Line="13" Column="38" />
       <File FileName="NewGenerationBlog.MVC/Areas/Admin/Controllers/CategoryController.cs" Line="29" Column="1" />
       <File FileName="NewGenerationBlog.MVC/Controllers/CategoryController.cs" Line="28" Column="11" />
-      <File FileName="NewGenerationBlog.Services/Concrete/PostManager.cs" Line="97" Column="1" />
-      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/CategoryMapping.cs" Line="1" Column="1" />
+      <File FileName="NewGenerationBlog.Services/Concrete/PostManager.cs" Line="94" Column="1" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/CategoryMapping.cs" Line="13" Column="50" />
       <File FileName="NewGenerationBlog.Entities/Dtos/RequestDto/CategoryAddDto.cs" Line="10" Column="1" />
       <File FileName="NewGenerationBlog.WebAPI/ModelValidators/CategoryValidator.cs" Line="17" Column="1" />
       <File FileName="NewGenerationBlog.Data/Migrations/20220404073609_initialCreate.cs" Line="43" Column="19" />
@@ -47,23 +49,26 @@
       <File FileName="NewGenerationBlog.Entities/Dtos/RequestDto/CategoryGetDto.cs" Line="9" Column="31" />
       <File FileName="NewGenerationBlog.Services/Abstract/IPostService.cs" Line="16" Column="57" />
       <File FileName="NewGenerationBlog.Entities/Dtos/PostDto.cs" Line="21" Column="1" />
-      <File FileName="NewGenerationBlog.Entities/Concrete/Tag.cs" Line="14" Column="1" />
+      <File FileName="NewGenerationBlog.Entities/Concrete/Tag.cs" Line="17" Column="1" />
       <File FileName="NewGenerationBlog.Entities/Concrete/Post.cs" Line="30" Column="1" />
       <File FileName="NewGenerationBlog.Entities/Concrete/TagPost.cs" Line="16" Column="1" />
+      <File FileName="NewGenerationBlog.Entities/Concrete/Category.cs" Line="19" Column="1" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/TagPostMapping.cs" Line="25" Column="1" />
+      <File FileName="NewGenerationBlog.Data/Concrete/EntityFramework/Mapping/TagMapping.cs" Line="19" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NewGenerationBlog" expanded="True">
+            <Node name="NewGenerationBlog.Data" expanded="True">
+              <Node name="Concrete" expanded="True">
+                <Node name="EntityFramework" expanded="True">
+                  <Node name="Mapping" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
             <Node name="NewGenerationBlog.Entities" expanded="True">
               <Node name="Concrete" expanded="True" />
-            </Node>
-            <Node name="NewGenerationBlog.Services" expanded="True">
-              <Node name="Abstract" expanded="True" />
-              <Node name="Concrete" expanded="True">
-                <Node name="PostManager.cs" selected="True" />
-              </Node>
-              <Node name="Extensions" expanded="True" />
             </Node>
             <Node name="NewGenerationBlog.Shared" expanded="True">
               <Node name="Data" expanded="True">
@@ -96,12 +101,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations>
-    <MultiItemSolutionRunConfiguration Id="MVC Project" Name="MVC Project">
-      <Items>
-        <StartupItem ItemId="{5239ED18-7654-4450-A9ED-BD1B7FD10489}" ItemName="NewGenerationBlog.MVC" ConfigurationId="Default" />
-      </Items>
-    </MultiItemSolutionRunConfiguration>
-  </MultiItemStartupConfigurations>
-  <MonoDevelop.Ide.ItemProperties.NewGenerationBlog.WebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

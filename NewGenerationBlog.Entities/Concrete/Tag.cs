@@ -8,6 +8,9 @@ namespace NewGenerationBlog.Entities.Concrete
     {
         public string Name { get; set; }
 
+        public int UserId { get; set; }
+        public User User { get; set; }
+
         public IList<TagPost> TagPosts { get; set; }
     }
 }
