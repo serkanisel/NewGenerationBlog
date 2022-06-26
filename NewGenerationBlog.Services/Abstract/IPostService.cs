@@ -8,14 +8,14 @@ namespace NewGenerationBlog.Services.Abstract
     public interface IPostService
     {
         Task<IDataResult<PostDto>> Get(int postID);
-        Task<IDataResult<PostListDto>> GetAll();
-        Task<IDataResult<PostListDto>> GetAllByNoneDeleted();
-        Task<IDataResult<PostListDto>> GetAllByCategory(int categoryId);
         Task<IDataResult<PostDto>> Add(PostAddDto postAddDto, int createdById);
         Task<IResult> Update(PostUpdateDto postUpdateDto);
         Task<IDataResult<IList<PostDto>>> GetAllByUserId(int userId);
-
+        Task<IDataResult<IList<PostDto>>> GetPostCountLimited(int userId,int count);
+        Task<IResult> FavoritePost(int postId,int userId);
         Task<IResult> Delete(int postID);
         Task<IResult> HardDelete(int postID);
+
+        Task<IDataResult<IList<PostDto>>> GetFavoritePosts(int userId, int count);
     }
 }

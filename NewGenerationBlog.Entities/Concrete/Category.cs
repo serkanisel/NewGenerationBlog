@@ -13,7 +13,7 @@ namespace NewGenerationBlog.Entities.Concrete
 
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public string Thumbnail { get; set; }
         public ICollection<Post> Posts {get;set;}
 
         public int UserId { get; set; }

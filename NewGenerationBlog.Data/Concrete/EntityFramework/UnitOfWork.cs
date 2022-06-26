@@ -15,7 +15,8 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework
         private EfTagRepository _efTagRepository;
         private EfTagPostRepository _efTagPostRepository;
         private EfUserRepository _efUserRepository;
-
+        private EfFavoritePostRepository _efFavoritePostRepository;
+        private EfUserRefreshTokenRepository _efUserRefreshTokenRepository;
 
         public UnitOfWork(NewGenerationBlogContext context)
         {
@@ -38,6 +39,11 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework
         public IRoleRepository Roles => _efRoleRepository ?? new EfRoleRepository(_context);
 
         public IUserRepository Users => _efUserRepository ?? new EfUserRepository(_context);
+
+        public IFavoritePost FavoritePosts => _efFavoritePostRepository ?? new EfFavoritePostRepository(_context);
+
+        public IUserRefreshTokenRepository UserRefreshTokens => _efUserRefreshTokenRepository ?? new EfUserRefreshTokenRepository(_context);
+
 
         public async Task<int> SaveAsync()
         {

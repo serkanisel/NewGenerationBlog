@@ -17,6 +17,7 @@
     <None Remove="Utilities\Results\Abstract\" />
     <None Remove="Utilities\Results\ComplextTypes\" />
     <None Remove="Utilities\Results\Concrete\" />
+    <None Remove="System.Linq.Dynamic.Core" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -34,5 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
   </ItemGroup>
 </Project>

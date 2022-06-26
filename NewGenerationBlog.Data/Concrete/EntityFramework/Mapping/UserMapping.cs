@@ -20,13 +20,11 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(p => p.Email).HasMaxLength(200);
             builder.Property(p => p.Email).IsRequired();
             builder.Property(p => p.Mobile).HasMaxLength(50);
-            builder.Property(p => p.Picture).IsRequired();
             builder.Property(p => p.Picture).HasMaxLength(500);
             builder.Property(p => p.PasswordHash).IsRequired();
             builder.Property(p => p.PasswordHash).HasColumnType("BYTEA");
             builder.Property(p => p.BirthDate).HasColumnType("DATE");
-
-
+            builder.Property(p => p.Password).HasMaxLength(500);
 
             builder.Property(p => p.CreatedDate).IsRequired();
             builder.Property(p => p.CreatedDate).HasColumnType("DATE");
@@ -34,7 +32,7 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(p => p.ModifiedDate).HasColumnType("DATE");
             builder.Property(p => p.IsDeleted).HasColumnType("BOOLEAN").IsRequired();
 
-            builder.HasOne<Role>(p => p.Role).WithMany(r => r.Users).HasForeignKey(p => p.RoleId);
+            builder.HasMany<FavoritePost>(p => p.FavoritePosts).WithOne(r => r.User).HasForeignKey(p => p.UserId).HasConstraintName("FK_User_FavoritePost");
 
             builder.ToTable("Users");
         }

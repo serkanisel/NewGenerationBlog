@@ -47,6 +47,10 @@ namespace NewGenerationBlog.Data.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("character varying(70)");
 
+                    b.Property<string>("Thumbnail")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
@@ -55,6 +59,41 @@ namespace NewGenerationBlog.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.FavoritePost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("DATE");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("BOOLEAN");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("DATE");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FavoritePosts");
                 });
 
             modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Post", b =>
@@ -86,6 +125,9 @@ namespace NewGenerationBlog.Data.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("FavoritePostId")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("BOOLEAN");
@@ -189,6 +231,7 @@ namespace NewGenerationBlog.Data.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("UserId")
@@ -277,17 +320,17 @@ namespace NewGenerationBlog.Data.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("DATE");
 
+                    b.Property<string>("Password")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("BYTEA");
 
                     b.Property<string>("Picture")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -296,9 +339,43 @@ namespace NewGenerationBlog.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoleId");
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.UserRefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("DATE");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("BOOLEAN");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("DATE");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserRefreshTokens");
                 });
 
             modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Category", b =>
@@ -309,6 +386,27 @@ namespace NewGenerationBlog.Data.Migrations
                         .HasConstraintName("FK_Post_User")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.FavoritePost", b =>
+                {
+                    b.HasOne("NewGenerationBlog.Entities.Concrete.Post", "Post")
+                        .WithOne("FavoritePost")
+                        .HasForeignKey("NewGenerationBlog.Entities.Concrete.FavoritePost", "PostId")
+                        .HasConstraintName("FK_Post_FavoritePost")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NewGenerationBlog.Entities.Concrete.User", "User")
+                        .WithMany("FavoritePosts")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_User_FavoritePost")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });
@@ -336,6 +434,7 @@ namespace NewGenerationBlog.Data.Migrations
                     b.HasOne("NewGenerationBlog.Entities.Concrete.User", "User")
                         .WithMany("Tags")
                         .HasForeignKey("UserId")
+                        .HasConstraintName("FK_Tag_User")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -361,15 +460,16 @@ namespace NewGenerationBlog.Data.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.User", b =>
+            modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.UserRefreshToken", b =>
                 {
-                    b.HasOne("NewGenerationBlog.Entities.Concrete.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleId")
+                    b.HasOne("NewGenerationBlog.Entities.Concrete.User", "User")
+                        .WithOne("UserRefreshToken")
+                        .HasForeignKey("NewGenerationBlog.Entities.Concrete.UserRefreshToken", "UserId")
+                        .HasConstraintName("FK_RefreshToken_User")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Role");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Category", b =>
@@ -379,12 +479,9 @@ namespace NewGenerationBlog.Data.Migrations
 
             modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Post", b =>
                 {
-                    b.Navigation("TagPosts");
-                });
+                    b.Navigation("FavoritePost");
 
-            modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Role", b =>
-                {
-                    b.Navigation("Users");
+                    b.Navigation("TagPosts");
                 });
 
             modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Tag", b =>
@@ -396,9 +493,13 @@ namespace NewGenerationBlog.Data.Migrations
                 {
                     b.Navigation("Categories");
 
+                    b.Navigation("FavoritePosts");
+
                     b.Navigation("Posts");
 
                     b.Navigation("Tags");
+
+                    b.Navigation("UserRefreshToken");
                 });
 #pragma warning restore 612, 618
         }

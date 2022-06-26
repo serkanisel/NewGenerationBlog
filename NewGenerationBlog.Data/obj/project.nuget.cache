@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4rt4X30EXnskt+hGfml1t9X6rGOGi1CghvsRrURNLoXyCcXOdKPAdwIMX6D6jwpnXVHZ5EXXRu1Sajs8rw4q+g==",
+  "dgSpecHash": "nCnSvE5c3yQDtBKfkuoVIbVtvMQ6ZWHmLRSzo5sqBt9ZdSZM5cNDy4GHvDQDMt79dcjb4BUU+aHM1zcz/5A0VQ==",
   "success": true,
   "projectFilePath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Data/NewGenerationBlog.Data.csproj",
   "expectedPackageFiles": [
@@ -64,6 +64,7 @@
     "/Users/serkanisel/.nuget/packages/system.io.filesystem/4.3.0/system.io.filesystem.4.3.0.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.io.filesystem.primitives/4.3.0/system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.linq/4.3.0/system.linq.4.3.0.nupkg.sha512",
+    "/Users/serkanisel/.nuget/packages/system.linq.dynamic.core/1.2.18/system.linq.dynamic.core.1.2.18.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.linq.expressions/4.3.0/system.linq.expressions.4.3.0.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.net.http/4.3.0/system.net.http.4.3.0.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.net.primitives/4.3.0/system.net.primitives.4.3.0.nupkg.sha512",

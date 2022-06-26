@@ -14,7 +14,7 @@ namespace NewGenerationBlog.Services.Abstract
         Task<IDataResult<IList<CategoryDto>>> GetAllByNoneDeleted(int userId);
         Task<IDataResult<IList<CategoryDto>>> GetCategoriesLimitedByUserId(CategoryGetDto categoryGetDto);
         Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto,int createdById);
-        Task<IResult> Update(CategoryUpdateDto categoryUpdateDto);
+        Task<IResult> Update(CategoryUpdateDto categoryUpdateDto,int createdById);
         Task<IResult> Delete(int categoryID);
         Task<IResult> HardDelete(int categoryID);
     }

@@ -11,7 +11,8 @@ namespace NewGenerationBlog.Data.Abstract
         ITagPostRepository TagPosts { get; }
         IRoleRepository Roles { get; }
         IUserRepository Users { get; }
-
+        IUserRefreshTokenRepository UserRefreshTokens { get; }
+        IFavoritePost FavoritePosts { get; }
         Task<int> SaveAsync();
 
     }

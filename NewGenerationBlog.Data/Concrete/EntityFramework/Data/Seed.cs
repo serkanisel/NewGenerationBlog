@@ -31,7 +31,7 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Data
 
             User u1 = new User();
             u1.Id = 1;
-            u1.RoleId = 7;
+//            u1.RoleId = 7;
             u1.FirstName = "Serkan";
             u1.LastName = "İşel"; 
             u1.Username = "sisel";

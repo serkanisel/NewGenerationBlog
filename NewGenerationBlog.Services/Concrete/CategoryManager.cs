@@ -11,6 +11,7 @@ using NewGenerationBlog.Shared.Utilities.Results.Concrete;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 
 namespace NewGenerationBlog.Services.Concrete
 {
@@ -114,11 +115,11 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<CategoryListDto>> GetAll()
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(null,0, c => c.Posts);
+            var categories = await _unitOfWork.Categories.GetAllAsync(includeProperties: p => p.Posts);
 
             var categoryDtoList = _mapper.Map<IList<CategoryDto>>(categories);
-
-            if (categories.Count > -1)
+            
+            if (categories.Count() > 0)
             {
                 return new DataResult<CategoryListDto>( new CategoryListDto
                 {
@@ -133,7 +134,7 @@ namespace NewGenerationBlog.Services.Concrete
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false && c.UserId==userId);
 
-            if (categories.Count > -1)
+            if (categories.Count() > 0)
             {
                 
                 IList<CategoryDto> result = new List<CategoryDto>();
@@ -149,7 +150,7 @@ namespace NewGenerationBlog.Services.Concrete
 
                     result.Add(categoryDto);
                 }
-
+                
                 
                 return new DataResult<IList<CategoryDto>>( result);
             }
@@ -159,9 +160,9 @@ namespace NewGenerationBlog.Services.Concrete
 
         public async Task<IDataResult<IList<CategoryDto>>> GetCategoriesLimitedByUserId(CategoryGetDto categoryGetDto)
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(c => c.IsDeleted == false && c.UserId == categoryGetDto.UserId ,categoryGetDto.RecordCount);
+            var categories = await _unitOfWork.Categories.GetAllAsync(predicate: c => c.IsDeleted == false && c.UserId == categoryGetDto.UserId, categoryGetDto.RecordCount);
 
-            if (categories.Count > -1)
+            if (categories.Count() > 0)
             {
                 IList<CategoryDto> result = new List<CategoryDto>();
                 foreach (var item in categories)
@@ -173,11 +174,12 @@ namespace NewGenerationBlog.Services.Concrete
                     categoryDto.PostCount = await _unitOfWork.Posts.CountAsync(p => p.CategoryId == item.Id);
                     categoryDto.CreatedDate = item.CreatedDate;
                     categoryDto.ModifiedDate = item.ModifiedDate;
+                    categoryDto.Thumbnail = item.Thumbnail;
 
                     result.Add(categoryDto);
                 }
 
-                return new DataResult<IList<CategoryDto>>( result);
+                return new DataResult<IList<CategoryDto>>( result, HttpStatusCode.OK);
             }
 
             return new DataResult<IList<CategoryDto>>("No Category Found", null,HttpStatusCode.BadRequest);
@@ -198,11 +200,11 @@ namespace NewGenerationBlog.Services.Concrete
             return new Result( "No Such Category Found",HttpStatusCode.BadRequest);
         }
 
-        public async Task<IResult> Update(CategoryUpdateDto categoryUpdateDto)
+        public async Task<IResult> Update(CategoryUpdateDto categoryUpdateDto,int createdById)
         {
             try
             {
-                var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryUpdateDto.Id);
+                var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryUpdateDto.Id && c.CreatedById==createdById);
 
                 if (category != null)
                 {

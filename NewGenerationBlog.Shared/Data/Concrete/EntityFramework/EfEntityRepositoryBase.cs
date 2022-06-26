@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NewGenerationBlog.Shared.Data.Abstract;
 using NewGenerationBlog.Shared.Entities.Abstract;
+using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Dynamic.Core;
 
 namespace NewGenerationBlog.Shared.Data.Concrete.EntityFramework
 {
@@ -38,16 +40,24 @@ namespace NewGenerationBlog.Shared.Data.Concrete.EntityFramework
             await Task.Run(() => { _context.Set<TEntity>().Remove(entity); });
         }
 
-        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, int recordCount=0, params Expression<Func<TEntity, object>>[] includeProperties)
+        public async Task<IList<TEntity>> Find(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _context.Set<TEntity>().Where(predicate).ToListAsync();
+        }
+
+        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, int? take=null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
-            
-            if(predicate !=null)
+
+            if (orderBy != null)
             {
-                if(recordCount==0)
+                query = orderBy(query);
+            }
+
+            if (predicate !=null)
+            {
                 query = query.Where(predicate);
-                else
-                    query = query.Where(predicate).Take(recordCount);
+             
             }
 
             if(includeProperties.Any())
@@ -57,6 +67,14 @@ namespace NewGenerationBlog.Shared.Data.Concrete.EntityFramework
                     query = query.Include(item);
                 }
             }
+
+           
+
+            if (take != null && take.HasValue)
+            {
+                query = query.Take(take.Value);
+            }
+
 
             return await query.ToListAsync();
         }
@@ -78,7 +96,7 @@ namespace NewGenerationBlog.Shared.Data.Concrete.EntityFramework
                 }
             }
 
-            return await query.SingleOrDefaultAsync();
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task UpdateAsync(TEntity entity)

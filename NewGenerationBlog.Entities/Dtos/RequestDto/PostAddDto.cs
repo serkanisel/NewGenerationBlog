@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using NewGenerationBlog.Entities.Concrete;
@@ -7,10 +8,6 @@ namespace NewGenerationBlog.Entities.Dtos
 {
     public class PostAddDto
     {
-        [DisplayName("Title")]
-        [Required(ErrorMessage ="{0} is required")]
-        [MaxLength(500, ErrorMessage ="Maximum length is 500 caracters.")]
-        [MinLength(5, ErrorMessage = "Minimum length is 5 caracters.")]
         public string Title { get; set; }
 
         [MinLength(20, ErrorMessage = "Minimum length is 20 caracters.")]
@@ -39,5 +36,6 @@ namespace NewGenerationBlog.Entities.Dtos
         public int CategoryId { get; set; }
 
         public string ContentText { get; set; }
+        public IList<String> SelectedTags { get; set; }
     }
 }

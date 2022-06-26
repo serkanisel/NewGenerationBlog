@@ -13,6 +13,7 @@ namespace NewGenerationBlog.Entities.Dtos
         public IList<PostDto> Posts { get; set; }
 
         public User User { get; set; }
+        public string Thumbnail { get; set; }
 
         public int PostCount { get; set; }
         public int CreatedById { get; set; }

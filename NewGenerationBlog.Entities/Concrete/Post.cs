@@ -24,6 +24,9 @@ namespace NewGenerationBlog.Entities.Concrete
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public IList<TagPost> TagPosts { get; set; }
+        public int FavoritePostId { get; set; }
+        public FavoritePost FavoritePost { get; set; }
+
+        public ICollection<TagPost> TagPosts { get; set; }
     }
 }

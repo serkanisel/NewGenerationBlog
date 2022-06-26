@@ -11,6 +11,10 @@
     <None Remove="AutoMapper\" />
     <None Remove="AutoMapper\Profiles\" />
     <None Remove="Extensions\" />
+    <None Remove="System.IdentityModel.Tokens.Jwt" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Helpers\" />
+    <None Remove="HtmlAgilityPack.NetCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
@@ -18,6 +22,7 @@
     <Folder Include="AutoMapper\" />
     <Folder Include="AutoMapper\Profiles\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NewGenerationBlog.Data\NewGenerationBlog.Data.csproj" />
@@ -25,5 +30,8 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.17" />
+    <PackageReference Include="HtmlAgilityPack.NetCore" Version="1.5.0.1" />
   </ItemGroup>
 </Project>

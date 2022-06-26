@@ -14,6 +14,7 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(p => p.Name).IsRequired();
             builder.Property(p => p.Name).HasMaxLength(70);
             builder.Property(p => p.Description).HasMaxLength(1000);
+            builder.Property(p => p.Thumbnail).HasMaxLength(1000);
 
             builder.Property(p => p.CreatedDate).IsRequired();
             builder.Property(p => p.CreatedDate).HasColumnType("DATE");
@@ -21,7 +22,8 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(p => p.ModifiedDate).HasColumnType("DATE");
             builder.Property(p => p.IsDeleted).HasColumnType("BOOLEAN").IsRequired();
 
-            builder.HasOne<User>(a => a.User).WithMany(c => c.Categories).HasForeignKey(a => a.UserId).HasConstraintName("FK_Post_User");
+            builder.HasOne<User>(a => a.User)
+                .WithMany(c => c.Categories).HasForeignKey(a => a.UserId).HasConstraintName("FK_Post_User");
 
             builder.ToTable("Categories");
         }

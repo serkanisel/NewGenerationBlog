@@ -39,9 +39,8 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
 
 
             //foreing keys
-            //builder.HasOne<Category>(a => a.Category).WithMany(c => c.Posts).HasForeignKey(a => a.CategoryId).HasConstraintName("FK_Post_Category");
             builder.HasOne<User>(a => a.User).WithMany(c => c.Posts).HasForeignKey(a => a.UserId).HasConstraintName("FK_Post_User");
-
+            builder.HasOne<FavoritePost>(a => a.FavoritePost).WithOne(r => r.Post).HasForeignKey<FavoritePost>(t => t.PostId).HasConstraintName("FK_Post_FavoritePost");
             builder.ToTable("Posts");
         }
     }

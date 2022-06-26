@@ -20,5 +20,6 @@ namespace NewGenerationBlog.Entities.Dtos
         public string Content { get; set; }
 
         public string ContentText { get; set; }
+        public int CategoryId { get; set; }
     }
 }

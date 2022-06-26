@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.Services"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.Data", "NewGenerationBlog.Data\NewGenerationBlog.Data.csproj", "{1A88CE18-0177-4E6F-B8FC-FBF09C3AD372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.MVC", "NewGenerationBlog.MVC\NewGenerationBlog.MVC.csproj", "{5239ED18-7654-4450-A9ED-BD1B7FD10489}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.Entities", "NewGenerationBlog.Entities\NewGenerationBlog.Entities.csproj", "{0A1FF505-51EE-44A6-8464-1848904DCC09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewGenerationBlog.WebAPI", "NewGenerationBlog.WebAPI\NewGenerationBlog.WebAPI.csproj", "{504A66E4-2B7B-498E-A7F6-C7DF1D6D4ACA}"
@@ -33,10 +31,6 @@ Global
 		{1A88CE18-0177-4E6F-B8FC-FBF09C3AD372}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A88CE18-0177-4E6F-B8FC-FBF09C3AD372}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A88CE18-0177-4E6F-B8FC-FBF09C3AD372}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5239ED18-7654-4450-A9ED-BD1B7FD10489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5239ED18-7654-4450-A9ED-BD1B7FD10489}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5239ED18-7654-4450-A9ED-BD1B7FD10489}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5239ED18-7654-4450-A9ED-BD1B7FD10489}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A1FF505-51EE-44A6-8464-1848904DCC09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A1FF505-51EE-44A6-8464-1848904DCC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A1FF505-51EE-44A6-8464-1848904DCC09}.Release|Any CPU.ActiveCfg = Release|Any CPU

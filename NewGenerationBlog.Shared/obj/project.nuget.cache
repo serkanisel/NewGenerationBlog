@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/zJW6JJaxJnufvzeXoWC5mcWI+XikF1PpC2/DWVJHiA7CIIQoewUJgSPcABj8TebBj/xAj5aglZ7XZJQvXWdYQ==",
+  "dgSpecHash": "6i3sNtUwMdGBsqu07+hdptzLmqjNetSy+nRcj2SfoL2ELJjpi8LS1jwKtMFzEm9m2v6o1oqaQzLsHXSYfbsvWQ==",
   "success": true,
   "projectFilePath": "/Volumes/Macintosh HD - Data/MyApps/NewGenerationBlog/NewGenerationBlog/NewGenerationBlog.Shared/NewGenerationBlog.Shared.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,8 @@
     "/Users/serkanisel/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.collections.immutable/5.0.0/system.collections.immutable.5.0.0.nupkg.sha512",
     "/Users/serkanisel/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
-    "/Users/serkanisel/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512"
+    "/Users/serkanisel/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
+    "/Users/serkanisel/.nuget/packages/system.linq.dynamic.core/1.2.18/system.linq.dynamic.core.1.2.18.nupkg.sha512"
   ],
   "logs": []
 }

@@ -18,10 +18,10 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<TagPost> TagPosts { get; set; }
+        public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
+        public DbSet<FavoritePost> FavoritePosts { get; set; }
 
-           
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
                 optionsBuilder.UseNpgsql(connectionString: @"Server=localhost;Port=5432;Database=NewGenerationBlogDB;User Id=sisel;Password=dana2314;");
@@ -32,9 +32,12 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Contexts
         {
             modelBuilder.ApplyConfiguration(new CategoryMapping());
             modelBuilder.ApplyConfiguration(new TagPostMapping());
+            modelBuilder.ApplyConfiguration(new TagMapping());
             modelBuilder.ApplyConfiguration(new PostMapping());
             modelBuilder.ApplyConfiguration(new RoleMapping());
             modelBuilder.ApplyConfiguration(new UserMapping());
+            modelBuilder.ApplyConfiguration(new UserRefreshTokenMapping());
+            modelBuilder.ApplyConfiguration(new FavoritePostMapping());
         }
 
     }

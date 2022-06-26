@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NewGenerationBlog.Entities.Concrete;
 using NewGenerationBlog.Shared.Entities.Abstract;
 
@@ -18,6 +19,8 @@ namespace NewGenerationBlog.Entities.Dtos
         public string ContentText { get; set; }
         public CategoryDto Category { get; set; }
 
+        public FavoritePostDto FavoritePostDto { get; set; }
         public UserDto User { get; set; }
+        public IList<TagDto> Tags { get; set; }
     }
 }

@@ -16,6 +16,8 @@ namespace NewGenerationBlog.Services.Extensions
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
             serviceCollection.AddScoped<ICategoryService, CategoryManager>();
             serviceCollection.AddScoped<IPostService, PostManager>();
+            serviceCollection.AddScoped<IUserService, UserManager>();
+            serviceCollection.AddScoped<ITagService, TagManager>();
             return serviceCollection;
         }
     }

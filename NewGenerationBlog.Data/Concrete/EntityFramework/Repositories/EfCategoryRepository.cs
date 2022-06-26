@@ -6,7 +6,7 @@ using NewGenerationBlog.Shared.Data.Concrete.EntityFramework;
 
 namespace NewGenerationBlog.Data.Concrete.EntityFramework.Repositories
 {
-    public class EfCategoryRepository : EfEntityRepositoryBase<Category> , ICategoryRepository
+    public class EfCategoryRepository : EfEntityRepositoryBase<Category>, ICategoryRepository
     {
         public EfCategoryRepository(DbContext context) : base(context)
         {
