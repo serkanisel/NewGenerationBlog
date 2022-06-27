@@ -244,7 +244,7 @@ namespace NewGenerationBlog.Services.Concrete
 
                 var newJwtToken = GenerateToken(username, userID);
 
-                await SaveUserRefreshToken(user.Id, tokenDto.Refresh_Token);
+                await SaveUserRefreshToken(user.Id, newJwtToken.Refresh_Token);
 
                 return new DataResult<TokenDto>("Token Generated", newJwtToken, HttpStatusCode.OK);
             }
