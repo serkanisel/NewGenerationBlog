@@ -200,6 +200,40 @@ namespace NewGenerationBlog.Services.Concrete
             return new Result( "No Such Category Found",HttpStatusCode.BadRequest);
         }
 
+        public async Task<IDataResult<IList<CategoryDto>>> Search(string term,int userId)
+        {
+            try
+            {
+                var categories = await _unitOfWork.Categories.GetAllAsync(c => c.UserId==userId && (c.Name.Contains(term) && c.Description.Contains(term)));
+
+                if (categories != null && categories.Count>0)
+                {
+                    IList<CategoryDto> categoriesDto = new List<CategoryDto>();
+
+                    foreach (var item in categories)
+                    {
+                        CategoryDto cateDto = new CategoryDto()
+                        {
+                            Id = item.Id,
+                            CreatedDate = item.CreatedDate,
+                            Description = item.Description,
+                            Name = item.Name,
+                        };
+
+                        categoriesDto.Add(cateDto);
+                    }
+
+                    return new DataResult<IList<CategoryDto>>("Category Updated", categoriesDto,HttpStatusCode.OK);
+                };
+
+                return new DataResult<IList<CategoryDto>>("No Such Category Found", null, HttpStatusCode.BadRequest);
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<IList<CategoryDto>>("An error occured",null, ex.Message, HttpStatusCode.InternalServerError);
+            }
+        }
+
         public async Task<IResult> Update(CategoryUpdateDto categoryUpdateDto,int createdById)
         {
             try
@@ -224,7 +258,6 @@ namespace NewGenerationBlog.Services.Concrete
             {
                 return new Result("An error occured", ex.Message,HttpStatusCode.InternalServerError);
             }
-            
         }
     }
 }

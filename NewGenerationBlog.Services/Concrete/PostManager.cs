@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using HtmlAgilityPack;
 using System.IO;
+using NewGenerationBlog.Entities.Dtos.RequestDto;
 
 namespace NewGenerationBlog.Services.Concrete
 {
@@ -48,7 +49,7 @@ namespace NewGenerationBlog.Services.Concrete
                     var line = reader.ReadLine();
                     postAddDto.ContentText =  postAddDto.ContentText.Replace(line, "");
                     postAddDto.Title = line;
-                    postAddDto.Thumbnail = "img" + postAddDto.Title.Substring(0, 1) + ".jpeg";
+                    postAddDto.Thumbnail = "img" + postAddDto.Title.Substring(0, 1) + ".png";
                 }
 
                 var doc = new HtmlDocument();
@@ -69,6 +70,10 @@ namespace NewGenerationBlog.Services.Concrete
                             break;
                         }
                     }
+                }
+                else
+                {
+                    postAddDto.Thumbnail = "img" + postAddDto.Title.Substring(0, 1).ToUpper() + ".png"; 
                 }
 
                 Post post = new Post();
@@ -187,6 +192,33 @@ namespace NewGenerationBlog.Services.Concrete
             }
         }
 
+        public async Task<IResult> DeleteFavorite(int postId, int userId)
+        {
+            try
+            {
+                var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postId && p.UserId == userId);
+
+                if (post == null)
+                    return new Result("No Post Found", "", HttpStatusCode.BadRequest);
+
+                //check whetner exists favoritePost
+                FavoritePost favoritePost = await _unitOfWork.FavoritePosts.GetAsync(p => p.PostId == postId && p.UserId == userId);
+
+                if (favoritePost == null)
+                    return new Result("Post Is Not Favorite", "", HttpStatusCode.BadRequest);
+
+                await _unitOfWork.FavoritePosts.DeleteAsync(favoritePost);
+                await _unitOfWork.SaveAsync();
+
+                return new Result("Post Favorite Is Deleted", "", HttpStatusCode.BadRequest);
+
+            }
+            catch (Exception ex)
+            {
+                return new Result("An Error Occured", ex.Message, HttpStatusCode.InternalServerError);
+            }
+        }
+
         public async Task<IDataResult<PostDto>> Get(int postID)
         {
             var post = await _unitOfWork.Posts.GetAsync(p => p.Id == postID, p => p.User,p => p.Category,p => p.FavoritePost,p => p.TagPosts);
@@ -250,7 +282,7 @@ namespace NewGenerationBlog.Services.Concrete
         {
             try
             {
-                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == userId && p.IsDeleted == false,null,null, p => p.User,p => p.Category);
+                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == userId && p.IsDeleted == false,null,null,orderBy: (p => p.OrderByDescending(p => p.ModifiedDate)), p => p.User,p => p.Category ,p => p.FavoritePost);
 
                 if (posts.Count() > 0)
                 {
@@ -284,6 +316,16 @@ namespace NewGenerationBlog.Services.Concrete
                             pDto.Category.Id = item.Category.Id;
                             pDto.Category.Name = item.Category.Name;
                             pDto.Category.Description = item.Category.Description;
+                        }
+                        if (item.FavoritePost != null)
+                        {
+                            pDto.FavoritePostDto = new FavoritePostDto()
+                            {
+                                Id = item.FavoritePost.Id,
+                                CreatedDate = item.FavoritePost.CreatedDate,
+                                UserId=item.FavoritePost.UserId,
+                                PostId = item.FavoritePost.PostId
+                            };
                         }
                         postDtos.Add(pDto);
                     }
@@ -391,11 +433,11 @@ namespace NewGenerationBlog.Services.Concrete
 
         }
 
-        public async Task<IDataResult<IList<PostDto>>> GetFavoritePosts(int userId, int count)
+        public async Task<IDataResult<IList<PostDto>>> GetFavoritePosts(int userId, int? count)
         {
             try
             {
-                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == userId && p.FavoritePost!=null, count,null,p => p.Category,p => p.FavoritePost);
+                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == userId && p.FavoritePost!=null && p.IsDeleted==false, count,null,orderBy: q => q.OrderByDescending(d => d.ModifiedDate) ,p => p.Category,p => p.FavoritePost);
 
                 IList<PostDto> postDtos = new List<PostDto>();
 
@@ -419,6 +461,11 @@ namespace NewGenerationBlog.Services.Concrete
                         Id = item.Category.Id
                     };
 
+                    pDto.FavoritePostDto = new FavoritePostDto();
+                    pDto.FavoritePostDto.CreatedDate = item.FavoritePost.CreatedDate;
+                    pDto.FavoritePostDto.Id = item.FavoritePost.Id;
+                    pDto.FavoritePostDto.PostId = item.FavoritePost.PostId;
+
                     postDtos.Add(pDto);
                 }
 
@@ -427,6 +474,41 @@ namespace NewGenerationBlog.Services.Concrete
             catch (Exception ex)
             {
                 return new DataResult<IList<PostDto>>("An Error Occured", null, ex.Message, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public async Task<IDataResult<SearchResponseDto>> Search(SearchRequestDto searchRequestDto)
+        {
+            try
+            {
+                SearchResponseDto result = new SearchResponseDto();
+                var posts = await _unitOfWork.Posts.GetAllAsync(p => p.UserId == searchRequestDto.UserId && p.Title.Contains(searchRequestDto.SearchTerm));
+
+                IList<PostDto> postDtos = new List<PostDto>();
+
+                foreach (var item in posts)
+                {
+                    PostDto pDto = new PostDto()
+                    {
+                        Id = item.Id,
+                        CommentCount = item.CommentCount,
+                        CreatedDate = item.CreatedDate,
+                        Content = item.Content,
+                        ContentText = item.ContentText,
+                        Title = item.Title,
+                        Thumbnail = item.Thumbnail
+                    };
+
+                    postDtos.Add(pDto);
+                }
+
+                result.Posts = postDtos;
+
+                return new DataResult<SearchResponseDto>(null, result, null, HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<SearchResponseDto>("An Error Occured", null, ex.Message, HttpStatusCode.InternalServerError);
             }
         }
     }

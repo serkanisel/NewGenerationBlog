@@ -45,7 +45,7 @@ namespace NewGenerationBlog.Shared.Data.Concrete.EntityFramework
             return await _context.Set<TEntity>().Where(predicate).ToListAsync();
         }
 
-        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, int? take=null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, params Expression<Func<TEntity, object>>[] includeProperties)
+        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, int? take=null,int? skip=null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
 
@@ -68,7 +68,11 @@ namespace NewGenerationBlog.Shared.Data.Concrete.EntityFramework
                 }
             }
 
-           
+            if (skip != null && skip.HasValue)
+            {
+                query = query.Skip(skip.Value);
+            }
+
 
             if (take != null && take.HasValue)
             {

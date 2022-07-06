@@ -11,8 +11,11 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
         {
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Id).ValueGeneratedOnAdd();
+
             builder.Property(a => a.Title).HasMaxLength(100);
-            builder.Property(a => a.Title).IsRequired(true);
+            builder.Property(a => a.Title).IsRequired(true).HasColumnType("citext");
+            builder.HasIndex(a => a.Title).UseCollation("case_insensitive_collation");
+
             builder.Property(a => a.Content).IsRequired();
             builder.Property(a => a.Content).HasColumnType("TEXT");
 

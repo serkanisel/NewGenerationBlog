@@ -17,5 +17,6 @@ namespace NewGenerationBlog.Services.Abstract
         Task<IResult> Update(CategoryUpdateDto categoryUpdateDto,int createdById);
         Task<IResult> Delete(int categoryID);
         Task<IResult> HardDelete(int categoryID);
+        Task<IDataResult<IList<CategoryDto>>> Search(string term,int userId);
     }
 }

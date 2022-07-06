@@ -11,24 +11,7 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Data
     {
         public static async Task SeedData(NewGenerationBlogContext context)
         {
-            Role role = new Role();
-
-            role.Id = 1;
-            role.CreatedById = 1;
-            role.CreatedDate = DateTime.Now;
-            role.Description = "Administrator";
-            role.IsDeleted = false;
-            role.ModifiedDate = DateTime.Now;
-            role.Name = "Administrator";
-
             
-
-            if (!context.Roles.Any())
-            {
-                await context.Roles.AddAsync(role);
-                await context.SaveChangesAsync();
-            }
-
             User u1 = new User();
             u1.Id = 1;
 //            u1.RoleId = 7;

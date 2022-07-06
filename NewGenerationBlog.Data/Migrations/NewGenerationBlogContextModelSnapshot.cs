@@ -15,6 +15,8 @@ namespace NewGenerationBlog.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasPostgresExtension("citext")
+                .HasAnnotation("Npgsql:CollationDefinition:case_insensitive_collation", "en-u-ks-primary,en-u-ks-primary,icu,False")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.15")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -161,7 +163,7 @@ namespace NewGenerationBlog.Data.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("citext");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
@@ -173,42 +175,12 @@ namespace NewGenerationBlog.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("Title")
+                        .UseCollation(new[] { "case_insensitive_collation" });
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("CreatedById")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("DATE");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1000)
-                        .HasColumnType("character varying(1000)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("BOOLEAN");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("DATE");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("NewGenerationBlog.Entities.Concrete.Tag", b =>
@@ -402,7 +374,6 @@ namespace NewGenerationBlog.Data.Migrations
                     b.HasOne("NewGenerationBlog.Entities.Concrete.User", "User")
                         .WithMany("FavoritePosts")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK_User_FavoritePost")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

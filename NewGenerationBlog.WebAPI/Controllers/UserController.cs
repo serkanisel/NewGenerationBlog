@@ -46,6 +46,17 @@ namespace NewGenerationBlog.WebAPI.Controllers
         {
 			return await _userService.GetUser(UserId);
         }
-	}
+
+        [HttpGet]
+        [Route("GetUsersDasboardDatas")]
+        [Authorize]
+        public async Task<IDataResult<UserDto>> GetUsersDashboardDatas()
+        {
+            var result = await _userService.GetUsersDashboardDatas(UserId);
+             return result;
+        }
+
+       
+    }
 }
 

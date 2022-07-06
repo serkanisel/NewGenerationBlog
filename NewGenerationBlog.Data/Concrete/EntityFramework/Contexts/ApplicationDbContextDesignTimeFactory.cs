@@ -9,7 +9,7 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Contexts
         public NewGenerationBlogContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<NewGenerationBlogContext>();
-            optionsBuilder.UseNpgsql(connectionString: @"Server=localhost;Port=5432;Database=NewGenerationBlogDB;User Id=sisel;Password=dana2314;");
+            optionsBuilder.UseNpgsql(connectionString: @"Server=localhost;Port=5433;Database=MindDrawerDB2;User Id=postgres;Password=danaveli2314;");
 
             return new NewGenerationBlogContext(optionsBuilder.Options);
         }

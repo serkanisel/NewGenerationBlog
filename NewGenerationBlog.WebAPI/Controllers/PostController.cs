@@ -9,6 +9,7 @@ using NewGenerationBlog.Services.Abstract;
 using NewGenerationBlog.Shared.Utilities.Results.Abstract;
 using NewGenerationBlog.WebAPI.Helpers;
 using HtmlAgilityPack;
+using NewGenerationBlog.Entities.Dtos.RequestDto;
 
 namespace NewGenerationBlog.WebAPI.Controllers
 {
@@ -68,9 +69,16 @@ namespace NewGenerationBlog.WebAPI.Controllers
 			return await _postService.FavoritePost(postid, UserId);
 		}
 
-		[HttpGet]
+        [HttpPost]
+        [Route("DeleteFavorite/{postid}")]
+        public async Task<IResult> DeleteFavorite(int postid)
+        {
+            return await _postService.DeleteFavorite(postid, UserId);
+        }
+
+        [HttpGet]
 		[Route("GetFavoritePosts/{count}")]
-		public async Task<IDataResult<IList<PostDto>>> GetFavoritePosts(int count)
+		public async Task<IDataResult<IList<PostDto>>> GetFavoritePosts(int? count)
 		{
 			return await _postService.GetFavoritePosts(UserId,count);
 		}
@@ -84,6 +92,16 @@ namespace NewGenerationBlog.WebAPI.Controllers
 
 			string name = doc.DocumentNode.SelectNodes("//img").First().Attributes["value"].Value;
             return Ok(name);
+        }
+
+        [HttpPost]
+        [Route("Search")]
+        [Authorize]
+        public async Task<IDataResult<SearchResponseDto>> Search(SearchRequestDto searchRequestDto)
+        {
+			searchRequestDto.UserId = UserId;
+            var result = await _postService.Search(searchRequestDto);
+            return result;
         }
     }
 }

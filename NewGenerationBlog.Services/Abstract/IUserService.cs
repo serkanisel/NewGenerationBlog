@@ -13,6 +13,7 @@ namespace NewGenerationBlog.Services.Abstract
 		public Task<IDataResult<TokenDto>> GenerateToken(UserLoginDto userLoginDto);
 		public Task<IDataResult<TokenDto>> GenerateRefresh(TokenDto tokenDto);
 		public Task<IDataResult<UserDto>> GetUser(int UserId);
+		public Task<IDataResult<UserDto>> GetUsersDashboardDatas(int userId);
     }
 }
 

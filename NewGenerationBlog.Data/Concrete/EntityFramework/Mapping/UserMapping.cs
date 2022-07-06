@@ -32,8 +32,6 @@ namespace NewGenerationBlog.Data.Concrete.EntityFramework.Mapping
             builder.Property(p => p.ModifiedDate).HasColumnType("DATE");
             builder.Property(p => p.IsDeleted).HasColumnType("BOOLEAN").IsRequired();
 
-            builder.HasMany<FavoritePost>(p => p.FavoritePosts).WithOne(r => r.User).HasForeignKey(p => p.UserId).HasConstraintName("FK_User_FavoritePost");
-
             builder.ToTable("Users");
         }
     }

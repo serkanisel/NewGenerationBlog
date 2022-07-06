@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
@@ -24,11 +25,17 @@ namespace NewGenerationBlog.Services.Concrete
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
+        private readonly ICategoryService _categoryService;
+        private readonly ITagService _tagService;
+        private readonly IPostService _postService;
 
-        public UserManager(IUnitOfWork unitOfWork, IMapper mapper)
+        public UserManager(IUnitOfWork unitOfWork, IMapper mapper,ICategoryService categoryService,ITagService tagService,IPostService postService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _categoryService = categoryService;
+            _tagService = tagService;
+            _postService = postService;
         }
 
         public Task<IDataResult<TokenDto>> Login(UserLoginDto userLoginDto)
@@ -134,7 +141,7 @@ namespace NewGenerationBlog.Services.Concrete
                             new Claim(ClaimTypes.Name,userName),
                             new Claim("Id",userId.ToString()),
                     }),
-                Expires = DateTime.UtcNow.AddMinutes(1),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
             };
 
@@ -271,6 +278,52 @@ namespace NewGenerationBlog.Services.Concrete
                     Username = user.Username,
                     LastName = user.LastName
                 };
+
+                return new DataResult<UserDto>(null, userDto, HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return new DataResult<UserDto>(ex.Message, null, HttpStatusCode.InternalServerError);
+
+            }
+        }
+
+        public async Task<IDataResult<UserDto>> GetUsersDashboardDatas(int userId)
+        {
+            try
+            {
+                User user = await _unitOfWork.Users.GetAsync(p => p.Id == userId);
+
+                UserDto userDto = new UserDto()
+                {
+                    Id = user.Id,
+                    BirthDate = user.BirthDate,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    Description = user.Description,
+                    Mobile = user.Mobile,
+                    Username = user.Username,
+                    LastName = user.LastName
+                };
+
+                //get users categories
+                CategoryGetDto categoryGetDto = new CategoryGetDto()
+                {
+                    RecordCount = 4,
+                    UserId = userId
+                };
+
+                var categories=await _categoryService.GetCategoriesLimitedByUserId(categoryGetDto);
+                userDto.Categories = categories.Data;
+
+                var tags = await _tagService.GetUsersTag(userId);
+                userDto.Tags = tags.Data;
+
+                var posts = await _postService.GetPostCountLimited(userId, 4);
+                userDto.Posts = posts.Data;
+
+                var favoritePosts = await _postService.GetFavoritePosts(userId, 4);
+                userDto.FavoritePosts = favoritePosts.Data;
 
                 return new DataResult<UserDto>(null, userDto, HttpStatusCode.OK);
             }
